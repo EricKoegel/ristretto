@@ -3,39 +3,36 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Dawid <hoek@hoek.pl>, 2015
-# Iro <irek.gierlach@gmail.com>, 2011
-# Piotr Sokół <psokol@jabster.pl>, 2009-2012,2014
-# Piotr Strębski <strebski@o2.pl>, 2015
+# abuyop <abuyop@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: xfce-i18n@xfce.org\n"
-"POT-Creation-Date: 2015-03-02 18:31+0100\n"
-"PO-Revision-Date: 2015-03-05 08:32+0000\n"
-"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/xfce-apps/language/pl/)\n"
+"POT-Creation-Date: 2015-01-25 12:30+0100\n"
+"PO-Revision-Date: 2015-02-09 15:05+0000\n"
+"Last-Translator: abuyop <abuyop@gmail.com>\n"
+"Language-Team: Malay (http://www.transifex.com/projects/p/xfce-apps/language/ms/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ms\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../src/main.c:62
 msgid "Version information"
-msgstr "Wypisuje informacje o wersji"
+msgstr "Maklumat versi"
 
 #: ../src/main.c:66
 msgid "Start in fullscreen mode"
-msgstr "Uruchamia w trybie pełnoekranowym"
+msgstr "Mula dalam mod skrin penuh"
 
 #: ../src/main.c:70
 msgid "Start a slideshow"
-msgstr "Rozpoczyna pokaz obrazów po uruchomieniu"
+msgstr "Mulakan paparan slaid"
 
 #: ../src/main.c:78
 msgid "Show settings dialog"
-msgstr "Wyświetla okno preferencji programu"
+msgstr "Tunjuk dialog tetapan"
 
 #: ../src/main.c:108
 #, c-format
@@ -44,425 +41,425 @@ msgid ""
 "\n"
 "Try %s --help to see a full list of\n"
 "available command line options.\n"
-msgstr "%s: %s\nProszę wprowadzić „%s --help”, aby wypisać pełną listę opcji wiersza poleceń.\n"
+msgstr "%s: %s\n\nCuba %s --help untuk lihat senarai \npenuh pilihan baris perintah yang \ntersedia.\n"
 
 #: ../src/main_window.c:57 ../ristretto.desktop.in.h:3
 msgid "Image Viewer"
-msgstr "Przeglądarka obrazów"
+msgstr "Pelihat Imej"
 
 #: ../src/main_window.c:365
 msgid "_File"
-msgstr "_Plik"
+msgstr "_Fail"
 
 #. Icon-name
 #: ../src/main_window.c:369
 msgid "_Open..."
-msgstr "_Otwórz..."
+msgstr "_Buka..."
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:371
 msgid "Open an image"
-msgstr "Otwiera plik obrazu"
+msgstr "Buka satu imej"
 
 #. Icon-name
 #: ../src/main_window.c:375
 msgid "_Save copy..."
-msgstr "_Zapisz kopię..."
+msgstr "_Simpan salinan..."
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:377
 msgid "Save a copy of the image"
-msgstr "Zapisuje kopię obrazu"
+msgstr "Simpan satu salinan imej"
 
 #. Icon-name
 #: ../src/main_window.c:381
 msgid "_Properties..."
-msgstr "_Właściwości..."
+msgstr "Si_fat..."
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:383
 msgid "Show file properties"
-msgstr "Wyświetla właściwości pliku"
+msgstr "Tunjuk sifat fail"
 
 #. Icon-name
 #: ../src/main_window.c:387 ../src/main_window.c:406
 msgid "_Edit"
-msgstr "_Edycja"
+msgstr "_Sunting"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:389
 msgid "Edit this image"
-msgstr "Otwiera plik obrazu do edycji"
+msgstr "Sunting imej ini"
 
 #. Icon-name
 #: ../src/main_window.c:393
 msgid "_Close"
-msgstr "Za_mknij"
+msgstr "Tutu_p"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:395
 msgid "Close this image"
-msgstr "Zamyka bieżący plik"
+msgstr "Tutup imej ini"
 
 #. Icon-name
 #: ../src/main_window.c:399
 msgid "_Quit"
-msgstr "Za_kończ"
+msgstr "K_eluar"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:401
 msgid "Quit Ristretto"
-msgstr "Kończy działanie programu"
+msgstr "Keluar dari Ristretto"
 
 #: ../src/main_window.c:410
 msgid "_Open with"
-msgstr "_Otwórz za pomocą"
+msgstr "_Buka dengan"
 
 #: ../src/main_window.c:414
 msgid "_Sorting"
-msgstr "_Sortowanie"
+msgstr "Pen_gisihan"
 
 #. Icon-name
 #: ../src/main_window.c:418
 msgid "_Delete"
-msgstr "_Usuń"
+msgstr "Pa_dam"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:420
 msgid "Delete this image from disk"
-msgstr "Trwale usuwa plik obrazu"
+msgstr "Padam imej ini dari cakera"
 
 #. Icon-name
 #: ../src/main_window.c:424
 msgid "_Clear private data..."
-msgstr "_Wyczyść prywatne dane..."
+msgstr "K_osongkan data persendirian..."
 
 #. Icon-name
 #: ../src/main_window.c:430
 msgid "_Preferences..."
-msgstr "P_referencje..."
+msgstr "K_eutamaan..."
 
 #: ../src/main_window.c:437
 msgid "_View"
-msgstr "_Widok"
+msgstr "_Lihat"
 
 #. Icon-name
 #: ../src/main_window.c:441
 msgid "_Fullscreen"
-msgstr "_Pełny ekran"
+msgstr "Skrin _Penuh"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:443
 msgid "Switch to fullscreen"
-msgstr "Włącza tryb pełnego ekranu"
+msgstr "Tukar ke skrin penuh"
 
 #. Icon-name
 #: ../src/main_window.c:447
 msgid "_Leave Fullscreen"
-msgstr "_Opuść pełny ekran"
+msgstr "T_inggalkan Skrin Penuh"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:449
 msgid "Leave Fullscreen"
-msgstr "Wyłącza tryb pełnego ekranu"
+msgstr "Tinggalkan Skrin Penuh"
 
 #. Icon-name
 #: ../src/main_window.c:453
 msgid "Set as _Wallpaper..."
-msgstr "_Ustal jako tło pulpitu..."
+msgstr "Tetapkan sebagai Kertas _Dinding..."
 
 #: ../src/main_window.c:460
 msgid "_Zoom"
-msgstr "_Skalowanie"
+msgstr "_Zum"
 
 #. Icon-name
 #: ../src/main_window.c:464
 msgid "Zoom _In"
-msgstr "Po_większ"
+msgstr "Zum _Masuk"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:466
 msgid "Zoom in"
-msgstr "Powiększa rozmiar obrazu"
+msgstr "Zum masuk"
 
 #. Icon-name
 #: ../src/main_window.c:470
 msgid "Zoom _Out"
-msgstr "Po_mniejsz"
+msgstr "Zum _Keluar"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:472
 msgid "Zoom out"
-msgstr "Pomniejsza rozmiar obrazu"
+msgstr "Zum keluar"
 
 #. Icon-name
 #: ../src/main_window.c:476
 msgid "Zoom _Fit"
-msgstr "_Dopasuj"
+msgstr "Zum M_uat"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:478
 msgid "Zoom to fit window"
-msgstr "Dopasowuje rozmiar obrazu do wymiarów okna"
+msgstr "Zum untuk muatkan tetingkap"
 
 #. Icon-name
 #: ../src/main_window.c:482
 msgid "_Normal Size"
-msgstr "_Zwykły rozmiar"
+msgstr "Saiz _Biasa"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:484
 msgid "Zoom to 100%"
-msgstr "Przywraca zwykły rozmiar obrazu"
+msgstr "Zum ke 100%"
 
 #: ../src/main_window.c:489
 msgid "_Rotation"
-msgstr "_Obracanie"
+msgstr "P_utaran"
 
 #. Icon-name
 #: ../src/main_window.c:493
 msgid "Rotate _Right"
-msgstr "W p_rawo"
+msgstr "Putar K_anan"
 
 #. Icon-name
 #: ../src/main_window.c:499
 msgid "Rotate _Left"
-msgstr "W _lewo"
+msgstr "Putar K_iri"
 
 #: ../src/main_window.c:506
 msgid "_Go"
-msgstr "P_rzejdź"
+msgstr "Per_gi"
 
 #. Icon-name
 #: ../src/main_window.c:510
 msgid "_Forward"
-msgstr "_Naprzód"
+msgstr "Ma_ju"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:512
 msgid "Next image"
-msgstr "Przechodzi do następnego obrazu"
+msgstr "Imej berikutnya"
 
 #. Icon-name
 #: ../src/main_window.c:516
 msgid "_Back"
-msgstr "_Wstecz"
+msgstr "_Undur"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:518
 msgid "Previous image"
-msgstr "Przechodzi do poprzedniego obrazu"
+msgstr "Imej terdahulu"
 
 #. Icon-name
 #: ../src/main_window.c:522
 msgid "F_irst"
-msgstr "_Pierwszy"
+msgstr "Pe_rtama"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:524
 msgid "First image"
-msgstr "Przechodzi do pierwszego obrazu"
+msgstr "Imej pertama"
 
 #. Icon-name
 #: ../src/main_window.c:528
 msgid "_Last"
-msgstr "_Ostatni"
+msgstr "T_erakhir"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:530
 msgid "Last image"
-msgstr "Przechodzi do ostatniego obrazu"
+msgstr "Imej terakhir"
 
 #: ../src/main_window.c:535
 msgid "_Help"
-msgstr "Pomo_c"
+msgstr "_Bantuan"
 
 #. Icon-name
 #: ../src/main_window.c:539
 msgid "_Contents"
-msgstr "_Spis treści"
+msgstr "Ka_ndungan"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:541
 msgid "Display ristretto user manual"
-msgstr "Otwiera podręcznik użytkownika programu"
+msgstr "Papar panduan pengguna ristretto"
 
 #. Icon-name
 #: ../src/main_window.c:545
 msgid "_About"
-msgstr "_O programie"
+msgstr "Per_ihal"
 
 #. Label-text
 #. Keyboard shortcut
 #: ../src/main_window.c:547
 msgid "Display information about ristretto"
-msgstr "Wyświetla informacje o programie"
+msgstr "Papar maklumat mengenai ristretto"
 
 #: ../src/main_window.c:552
 msgid "_Position"
-msgstr "_Położenie"
+msgstr "Ked_udukan"
 
 #: ../src/main_window.c:556
 msgid "_Size"
-msgstr "_Rozmiar"
+msgstr "_Saiz"
 
 #: ../src/main_window.c:560
 msgid "Thumbnail Bar _Position"
-msgstr "_Położenie paska miniatur"
+msgstr "Ke_dudukan Palang Lakaran Kenit"
 
 #: ../src/main_window.c:564
 msgid "Thumb_nail Size"
-msgstr "_Rozmiar miniatur"
+msgstr "Saiz _Lakaran Kenit"
 
 #. Icon-name
 #: ../src/main_window.c:569
 msgid "Leave _Fullscreen"
-msgstr "Opuść p_ełny ekran"
+msgstr "Tinggalkan Skrin _Penuh"
 
 #. Icon-name
 #: ../src/main_window.c:585
 msgid "_Show Toolbar"
-msgstr "Pasek _narzędziowy"
+msgstr "_Tunjuk Palang Alat"
 
 #. Icon-name
 #: ../src/main_window.c:593
 msgid "Show _Thumbnail Bar"
-msgstr "Pasek _miniatur"
+msgstr "Tunjuk Palang Lakaran Ke_nit"
 
 #. Icon-name
 #: ../src/main_window.c:601
 msgid "Show Status _Bar"
-msgstr "Pasek _stanu"
+msgstr "Tunjuk _Palang Status"
 
 #. Icon-name
 #: ../src/main_window.c:614
 msgid "sort by filename"
-msgstr "Według nazwy pliku"
+msgstr "isih mengikut nama fail"
 
 #. Icon-name
 #: ../src/main_window.c:621
 msgid "sort by date"
-msgstr "Według daty"
+msgstr "isih mengikut tarikh"
 
 #. Icon-name
 #: ../src/main_window.c:632
 msgid "Left"
-msgstr "Lewo"
+msgstr "Kiri"
 
 #: ../src/main_window.c:638
 msgid "Right"
-msgstr "Prawo"
+msgstr "Kanan"
 
 #: ../src/main_window.c:644
 msgid "Top"
-msgstr "Góra"
+msgstr "Atas"
 
 #: ../src/main_window.c:650
 msgid "Bottom"
-msgstr "Dół"
+msgstr "Bawah"
 
 #: ../src/main_window.c:661
 msgid "Very Small"
-msgstr "Bardzo mały"
+msgstr "Sangat Kecil"
 
 #: ../src/main_window.c:667
 msgid "Smaller"
-msgstr "Mniejszy"
+msgstr "Lebih Kecil"
 
 #: ../src/main_window.c:673
 msgid "Small"
-msgstr "Mały"
+msgstr "Kecil"
 
 #: ../src/main_window.c:679
 msgid "Normal"
-msgstr "Zwykły"
+msgstr "Biasa"
 
 #: ../src/main_window.c:685
 msgid "Large"
-msgstr "Duży"
+msgstr "Besar"
 
 #: ../src/main_window.c:691
 msgid "Larger"
-msgstr "Większy"
+msgstr "Lebih Besar"
 
 #: ../src/main_window.c:697
 msgid "Very Large"
-msgstr "Bardzo duży"
+msgstr "Sangat Besar"
 
 #. Create Play/Pause Slideshow actions
 #: ../src/main_window.c:849
 msgid "_Play"
-msgstr "_Rozpocznij pokaz"
+msgstr "_Main"
 
 #: ../src/main_window.c:849
 msgid "Play slideshow"
-msgstr "Rozpoczyna pokaz obrazów"
+msgstr "Main paparan slaid"
 
 #: ../src/main_window.c:850
 msgid "_Pause"
-msgstr "_Wstrzymaj pokaz"
+msgstr "_Jeda"
 
 #: ../src/main_window.c:850
 msgid "Pause slideshow"
-msgstr "Wstrzymuje pokaz obrazów"
+msgstr "Jeda paparan slaid"
 
 #. Create Recently used items Action
 #: ../src/main_window.c:853
 msgid "_Recently used"
-msgstr "O_statnio otwarte"
+msgstr "Diguna _baru-baru ini"
 
 #: ../src/main_window.c:853
 msgid "Recently used"
-msgstr "Wyświetla ostatnio otwarte pliki"
+msgstr "Diguna baru-baru ini"
 
 #: ../src/main_window.c:957 ../src/main_window.c:1495
 msgid "Press open to select an image"
-msgstr "Aby otworzyć obraz, należy użyć polecenia Otwórz."
+msgstr "Tekan buka untuk pilih imej"
 
 #: ../src/main_window.c:1354 ../src/main_window.c:1358
 msgid "Open With Other _Application..."
-msgstr "Otwórz za pomocą innego p_rogramu..."
+msgstr "Buka Dengan _Aplikasi Lain..."
 
 #: ../src/main_window.c:1379 ../src/main_window.c:1385
 msgid "Empty"
-msgstr "Pusty"
+msgstr "Kosong"
 
 #: ../src/main_window.c:1505
 msgid "Loading..."
-msgstr "Wczytywanie..."
+msgstr "Memuatkan..."
 
 #: ../src/main_window.c:2109
 msgid "Choose 'set wallpaper' method"
-msgstr "Metoda ustalania tła pulpitu"
+msgstr "Pilih kaedah 'tetapkan kertas dinding'"
 
 #: ../src/main_window.c:2124 ../src/preferences_dialog.c:464
 msgid ""
 "Configure which system is currently managing your desktop.\n"
 "This setting determines the method <i>Ristretto</i> will use\n"
 "to configure the desktop wallpaper."
-msgstr "Wskazuje bieżące środowisko graficzne.\nTo ustawienie ustala metodę, którą program\nbędzie używał do konfigurowania tła pulpitu."
+msgstr "Kofigur sistem manakah kini mengurus dekstop anda.\nTetapan ini menentukan kaedah <i>Ristretto</i> akan diguna\nuntuk mengkonfigur kertas dinding desktop."
 
 #: ../src/main_window.c:2149 ../src/preferences_dialog.c:488
 msgid "None"
-msgstr "Żadne"
+msgstr "Tiada"
 
 #: ../src/main_window.c:2153 ../src/preferences_dialog.c:492
 msgid "Xfce"
@@ -474,44 +471,44 @@ msgstr "GNOME"
 
 #: ../src/main_window.c:2597
 msgid "Developer:"
-msgstr "Twórca:"
+msgstr "Pembangun:"
 
 #: ../src/main_window.c:2606 ../ristretto.appdata.xml.in.h:1
 msgid "Ristretto is an image viewer for the Xfce desktop environment."
-msgstr "Przeglądarka obrazów dla środowiska Xfce"
+msgstr "Mousepad merupakan pelihat imej untuk persekitaran desktop Xfce."
 
 #: ../src/main_window.c:2614
 msgid "translator-credits"
-msgstr "Piotr Sokół <psokol@jabster.pl>, 2010, 2011, 2012, 2014.\nŁukasz Romanowicz <lukasz210@gmail.com>"
+msgstr "Abuyop <abuyop@gmail.com>"
 
 #: ../src/main_window.c:2916
 msgid "Open image"
-msgstr "Wybór pliku"
+msgstr "Buka imej"
 
 #: ../src/main_window.c:2935
 msgid "Images"
-msgstr "Wszystkie obrazy"
+msgstr "Imej"
 
 #: ../src/main_window.c:2940
 msgid ".jp(e)g"
-msgstr "Obrazy w formacie JPEG"
+msgstr ".jp(e)g"
 
 #: ../src/main_window.c:2967 ../src/main_window.c:3109
 msgid "Could not open file"
-msgstr "Nie można otworzyć pliku"
+msgstr "Tidak dapat buka fail"
 
 #: ../src/main_window.c:3142
 msgid "Save copy"
-msgstr "Wybór pliku"
+msgstr "Simpan salinan"
 
 #: ../src/main_window.c:3168
 msgid "Could not save file"
-msgstr "Nie można zapisać pliku"
+msgstr "Tidak dapat simpan fail"
 
 #: ../src/main_window.c:3336
 #, c-format
 msgid "Are you sure you want to delete image '%s' from disk?"
-msgstr "Usunąć plik „%s”?"
+msgstr "Anda pasti mahu memadam imej '%s' dari cakera?"
 
 #: ../src/main_window.c:3354
 #, c-format
@@ -519,12 +516,12 @@ msgid ""
 "An error occurred when deleting image '%s' from disk.\n"
 "\n"
 "%s"
-msgstr "Wystąpił błąd podczas usuwania pliku „%s”.\n\n%s"
+msgstr "Satu ralat berlaku ketika memadam imej '%s' dari cakera.\n\n%s"
 
 #: ../src/main_window.c:3370
 #, c-format
 msgid "Are you sure you want to send image '%s' to trash?"
-msgstr "Przenieść plik „%s” do kosza?"
+msgstr "Anda pasti ingin menghantar imej '%s' ke tong sampah?"
 
 #: ../src/main_window.c:3388
 #, c-format
@@ -532,260 +529,260 @@ msgid ""
 "An error occurred when sending image '%s' to trash.\n"
 "\n"
 "%s"
-msgstr "Wystąpił błąd podczas przenoszenia pliku „%s” do kosza.\n\n%s"
+msgstr "Satu ralat berlaku ketika menghantar imej '%s' ke tong sampah.\n\n%s"
 
 #: ../src/main_window.c:3718
 msgid "Edit with"
-msgstr "Wybór programu"
+msgstr "Sunting dengan"
 
 #: ../src/main_window.c:3736
 #, c-format
 msgid "Open %s and other files of type %s with:"
-msgstr "Otwieranie pliku „%s” i innych plików typu „%s”, przy użyciu:"
+msgstr "Buka %s dan lain-lain fail jenis %s dengan:"
 
 #: ../src/main_window.c:3741
 msgid "Use as _default for this kind of file"
-msgstr "_Domyślnie dla plików tego typu"
+msgstr "Guna sebagai _lalai untuk jenis fail ini"
 
 #: ../src/main_window.c:3831
 msgid "Recommended Applications"
-msgstr "Preferowane programy"
+msgstr "Aplikasi Disaran"
 
 #: ../src/main_window.c:3911
 msgid "Other Applications"
-msgstr "Inne programy"
+msgstr "Aplikasi Lain"
 
 #: ../src/icon_bar.c:345
 msgid "Orientation"
-msgstr "Orientacja"
+msgstr "Orientasi"
 
 #: ../src/icon_bar.c:346
 msgid "The orientation of the iconbar"
-msgstr "Orientacja paska ikon"
+msgstr "Orientasi palang ikon"
 
 #: ../src/icon_bar.c:362
 msgid "File column"
-msgstr "Kolumna plik"
+msgstr "Lajur fail"
 
 #: ../src/icon_bar.c:363
 msgid "Model column used to retrieve the file from"
-msgstr "Tworzenie kolumny używanej do otrzymania pliku z"
+msgstr "Lajur model yang digunakan untuk mendapatkan fail"
 
 #: ../src/icon_bar.c:375
 msgid "Icon Bar Model"
-msgstr "Model paska ikon"
+msgstr "Model Palang Ikon"
 
 #: ../src/icon_bar.c:376
 msgid "Model for the icon bar"
-msgstr "Model dla paska ikon"
+msgstr "Model untuk palan ikon"
 
 #: ../src/icon_bar.c:392
 msgid "Active"
-msgstr "Czynny"
+msgstr "Aktif"
 
 #: ../src/icon_bar.c:393
 msgid "Active item index"
-msgstr "Spis czynnych pozycji"
+msgstr "Indeks item aktif"
 
 #: ../src/icon_bar.c:409 ../src/icon_bar.c:410
 msgid "Show Text"
-msgstr "Pokaż tekst"
+msgstr "Tunjuk Teks"
 
 #: ../src/icon_bar.c:416 ../src/icon_bar.c:417
 msgid "Active item fill color"
-msgstr "Wypełnienie kolorem czynnej pozycji"
+msgstr "Warna isian item aktif"
 
 #: ../src/icon_bar.c:423 ../src/icon_bar.c:424
 msgid "Active item border color"
-msgstr "Kolor obramowania czynnej pozycji"
+msgstr "Warna sempadan item aktif"
 
 #: ../src/icon_bar.c:430 ../src/icon_bar.c:431
 msgid "Active item text color"
-msgstr "Kolor tekstu czynnej pozycji"
+msgstr "Warna teks item aktif"
 
 #: ../src/icon_bar.c:437 ../src/icon_bar.c:438
 msgid "Cursor item fill color"
-msgstr "Kolor wypełnienia kursora"
+msgstr "Warna isian item kursor"
 
 #: ../src/icon_bar.c:444 ../src/icon_bar.c:445
 msgid "Cursor item border color"
-msgstr "Kolor obramowania kursora"
+msgstr "Warna sempadan item kursor"
 
 #: ../src/icon_bar.c:451 ../src/icon_bar.c:452
 msgid "Cursor item text color"
-msgstr "Kolor teksu kursora"
+msgstr "Warna teks item kursor"
 
 #: ../src/privacy_dialog.c:152
 msgid "Time range to clear:"
-msgstr "Zakres czasu:"
+msgstr "Julat masa untuk dikosongkan:"
 
 #: ../src/privacy_dialog.c:156
 msgid "Cleanup"
-msgstr "Czyszczenie"
+msgstr "Bersih"
 
 #: ../src/privacy_dialog.c:158
 msgid "Last Hour"
-msgstr "Ostatnia godzina"
+msgstr "Jam Terakhir"
 
 #: ../src/privacy_dialog.c:159
 msgid "Last Two Hours"
-msgstr "Ostatnie 2 godziny"
+msgstr "Dua Jam Terakhir"
 
 #: ../src/privacy_dialog.c:160
 msgid "Last Four Hours"
-msgstr "Ostatnie 4 godziny"
+msgstr "Empat Jam Terakhir"
 
 #: ../src/privacy_dialog.c:161
 msgid "Today"
-msgstr "Dzisiaj"
+msgstr "Hari Ini"
 
 #: ../src/privacy_dialog.c:162
 msgid "Everything"
-msgstr "Wszystkie"
+msgstr "Segalanya"
 
 #: ../src/privacy_dialog.c:460
 msgid "Clear private data"
-msgstr "Czyszczenie prywatnych danych"
+msgstr "Kosongkan data persendirian"
 
 #: ../src/preferences_dialog.c:276
 msgid "Display"
-msgstr "Wyświetlanie"
+msgstr "Paparan"
 
 #: ../src/preferences_dialog.c:283
 msgid "Background color"
-msgstr "Kolor tła"
+msgstr "Warna latar belakang"
 
 #: ../src/preferences_dialog.c:287
 msgid "Override background color:"
-msgstr "Własny:"
+msgstr "Batalkan warna latar belakang:"
 
 #: ../src/preferences_dialog.c:314
 msgid "Quality"
-msgstr "Jakość"
+msgstr "Kualiti"
 
 #: ../src/preferences_dialog.c:318
 msgid ""
 "With this option enabled, the maximum image-quality will be limited to the "
 "screen-size."
-msgstr "Ogranicza maksymalną jakość obrazu do rozmiaru ekranu"
+msgstr "Dengan pilihan ini dibenarkan, kualiti-imej maksimum akan dihadkan ke saiz-skrin."
 
 #: ../src/preferences_dialog.c:321
 msgid "Limit rendering quality"
-msgstr "Ograniczenie jakości renderowania"
+msgstr "Hadkan kualiti penerapan"
 
 #: ../src/preferences_dialog.c:333
 msgid "Fullscreen"
-msgstr "Pełny ekran"
+msgstr "Skrin Penuh"
 
 #: ../src/preferences_dialog.c:338
 msgid "Thumbnails"
-msgstr "Miniatury"
+msgstr "Lakaran Kenit"
 
 #: ../src/preferences_dialog.c:341
 msgid ""
 "The thumbnail bar can be automatically hidden when the window is fullscreen."
-msgstr "Pasek miniatur może być automatycznie ukrywany\npodczas działania w trybie pełnoekranowym."
+msgstr "Palang lakaran kenit boleh disembunyikan secara automatik bila tetingkap berskrin penuh."
 
 #: ../src/preferences_dialog.c:344
 msgid "Hide thumbnail bar when fullscreen"
-msgstr "Ukrywanie paska miniatur w trybie pełnego ekranu"
+msgstr "Sembunyi palang lakaran kenit bila berskrin penuh"
 
 #: ../src/preferences_dialog.c:352
 msgid "Clock"
-msgstr "Zegar"
+msgstr "Jam"
 
 #: ../src/preferences_dialog.c:355
 msgid ""
 "Show an analog clock that displays the current time when the window is "
 "fullscreen"
-msgstr "Wyświetla w trybie pełnego ekranu zegar analogowy wskazujący bieżący czas"
+msgstr "Tunjuk jam analog yang memaparkan masa semasa bila tetingkap berskrin penuh"
 
 #: ../src/preferences_dialog.c:358
 msgid "Show Fullscreen Clock"
-msgstr "Wyświetlanie zegara w trybie pełnego ekranu"
+msgstr "Tunjuk Jam Berskrin Penuh"
 
 #: ../src/preferences_dialog.c:375
 msgid "Slideshow"
-msgstr "Pokaz slajdów"
+msgstr "Paparan Slaid"
 
 #: ../src/preferences_dialog.c:379
 msgid "Timeout"
-msgstr "Czas"
+msgstr "Had Masa Tamat"
 
 #: ../src/preferences_dialog.c:382
 msgid ""
 "The time period an individual image is displayed during a slideshow\n"
 "(in seconds)"
-msgstr "Wyświetlanie pojedynczego obrazu (s):"
+msgstr "Tempoh masa imej individu dipaparkan ketika paparan slaid\n(dalam saat)"
 
 #: ../src/preferences_dialog.c:400
 msgid "Control"
-msgstr "Sterowanie"
+msgstr "Kawalan"
 
 #: ../src/preferences_dialog.c:404
 msgid "Scroll wheel"
-msgstr "Kółko myszy"
+msgstr "Roda Tatal"
 
 #: ../src/preferences_dialog.c:407
 msgid "Invert zoom direction"
-msgstr "Odwrócenie kierunku powiększania obrazu"
+msgstr "Songsangkan arah zum"
 
 #: ../src/preferences_dialog.c:421
 msgid "Behaviour"
-msgstr "Zachowanie"
+msgstr "Kelakuan"
 
 #: ../src/preferences_dialog.c:426
 msgid "Startup"
-msgstr "Uruchamianie"
+msgstr "Permulaan"
 
 #: ../src/preferences_dialog.c:428
 msgid "Maximize window on startup when opening an image"
-msgstr "Maksymalizowanie okna podczas uruchamiania programu"
+msgstr "Maksimumkan tetingkap pada permulaan bila membuka imej"
 
 #: ../src/preferences_dialog.c:434
 msgid "Wrap around images"
-msgstr "Przechodzenie pomiędzy początkiem i końcem katalogu"
+msgstr "Lilit disekeliling imej"
 
 #: ../src/preferences_dialog.c:453
 msgid "Desktop"
-msgstr "Środowisko graficzne"
+msgstr "Dekstop"
 
 #: ../src/preferences_dialog.c:572
 msgid "Image Viewer Preferences"
-msgstr "Preferencje"
+msgstr "Keutamaan Pelihat Imej"
 
 #: ../src/properties_dialog.c:181
 msgid "<b>Name:</b>"
-msgstr "<b>Nazwa:</b>"
+msgstr "<b>Nama:</b>"
 
 #: ../src/properties_dialog.c:182
 msgid "<b>Kind:</b>"
-msgstr "<b>Typ:</b>"
+msgstr "<b>Jenis:</b>"
 
 #: ../src/properties_dialog.c:183
 msgid "<b>Modified:</b>"
-msgstr "<b>Czas modyfikacji:</b>"
+msgstr "<b>Diubahsuai:</b>"
 
 #: ../src/properties_dialog.c:184
 msgid "<b>Accessed:</b>"
-msgstr "<b>Czas dostępu:</b>"
+msgstr "<b>Dicapai:</b>"
 
 #: ../src/properties_dialog.c:185
 msgid "<b>Size:</b>"
-msgstr "<b>Rozmiar:</b>"
+msgstr "<b>Saiz:</b>"
 
 #: ../src/properties_dialog.c:309
 msgid "General"
-msgstr "Ogólne"
+msgstr "Am"
 
 #: ../src/properties_dialog.c:313
 msgid "Image"
-msgstr "Obraz"
+msgstr "Imej"
 
 #: ../src/properties_dialog.c:541
 #, c-format
 msgid "<b>Date taken:</b>"
-msgstr "<b>Data wykonania:</b>"
+msgstr "<b>Tarikh diambil:</b>"
 
 #: ../src/properties_dialog.c:553 ../src/properties_dialog.c:565
 #: ../src/properties_dialog.c:577
@@ -796,7 +793,7 @@ msgstr "<b>%s</b>"
 #: ../src/properties_dialog.c:639
 #, c-format
 msgid "%s - Properties"
-msgstr "%s - Właściwości"
+msgstr "%s - Sifat"
 
 #: ../src/thumbnailer.c:460
 msgid ""
@@ -806,63 +803,63 @@ msgid ""
 "\n"
 "Install <b>Tumbler</b> or another <i>thumbnailing daemon</i>\n"
 "to resolve this issue."
-msgstr "Usługa podglądu miniatur jest niedostępna.\nZ tego powodu, nie można utworzyć miniatur.\n\nW celu rozwiązania problemu, proszę zainstalować\nprogram <b>Tumbler</b> lub innego <i>demona\npodglądu miniatur</i>."
+msgstr "Thumbnailer-service tidak boleh dicapai,\natas sebab ini, lakaran kenit tidak dapat\ndicipta.\n\nPasang <b>Tumbler</b> atau lain-lain <i>thumbnailing daemon</i>\nuntuk selesaikan masalah ini."
 
 #: ../src/thumbnailer.c:470
 msgid "Do _not show this message again"
-msgstr "_Pomijanie wyświetlania tego komunikatu ponownie"
+msgstr "Janga_n tunjuk mesej ini lagi"
 
 #: ../src/xfce_wallpaper_manager.c:379 ../src/gnome_wallpaper_manager.c:235
 msgid "Style:"
-msgstr "Styl:"
+msgstr "Gaya:"
 
 #: ../src/xfce_wallpaper_manager.c:380
 msgid "Brightness:"
-msgstr "Jasność:"
+msgstr "Kecerahan:"
 
 #: ../src/xfce_wallpaper_manager.c:381
 msgid "Saturation:"
-msgstr "Nasycenie:"
+msgstr "Ketepuan:"
 
 #: ../src/xfce_wallpaper_manager.c:397
 msgid "Apply to all workspaces"
-msgstr "Zastosuj do wszystkich powierzchni roboczych"
+msgstr "Laksana ke semua ruang kerja"
 
 #: ../src/xfce_wallpaper_manager.c:404 ../src/gnome_wallpaper_manager.c:246
 msgid "Set as wallpaper"
-msgstr "Konfigurowanie tła pulpitu"
+msgstr "Tetapkan sebagai kertas dinding"
 
 #: ../src/xfce_wallpaper_manager.c:557 ../src/gnome_wallpaper_manager.c:313
 msgid "Auto"
-msgstr "Automatycznie"
+msgstr "Auto"
 
 #: ../src/xfce_wallpaper_manager.c:560
 msgid "Centered"
-msgstr "Wyśrodkowanie"
+msgstr "Ditengah"
 
 #: ../src/xfce_wallpaper_manager.c:563
 msgid "Tiled"
-msgstr "Rozmieszczenie sąsiadująco"
+msgstr "Berjubin"
 
 #: ../src/xfce_wallpaper_manager.c:566
 msgid "Stretched"
-msgstr "Rozciągnięcie"
+msgstr "Diregang"
 
 #: ../src/xfce_wallpaper_manager.c:569
 msgid "Scaled"
-msgstr "Przeskalowanie"
+msgstr "Diskala"
 
 #: ../src/xfce_wallpaper_manager.c:572
 msgid "Zoomed"
-msgstr "Powiększenie"
+msgstr "Dizum"
 
 #: ../ristretto.desktop.in.h:1
 msgid "Ristretto Image Viewer"
-msgstr "Przeglądarka obrazów Ristretto"
+msgstr "Pelihat Imej Ristretto"
 
 #: ../ristretto.desktop.in.h:2
 msgid "Look at your images easily"
-msgstr "Umożliwia wygodne przeglądanie zdjęć i obrazów"
+msgstr "Lihat imej anda dengan mudah"
 
 #: ../ristretto.appdata.xml.in.h:2
 msgid ""
@@ -870,31 +867,31 @@ msgid ""
 "scroll through images, run a slideshow of images, open images with other "
 "applications like an image-editor or configure an image as the desktop "
 "wallpaper."
-msgstr "Przeglądarka obrazów Ristretto to program, który może być używany do przeglądania i przewijania kolekcji obrazów, uruchamiania prezentacji slajdów z obrazów, otwierania obrazów przy użyciu innego programu, takiego jak edytor grafiki, oraz do konfigurowania obrazu jako tapety pulpitu."
+msgstr "Pelihat IMej Ristretto ialah aplikasi yang digunakan untuk melihat dan menatal imej, menjalankan paparan slaid imej, membuka imej dengan aplikasi lain seperti image-editor atau konfigur imej sebagai kertas dinding desktop."
 
 #: ../ristretto.appdata.xml.in.h:3
 msgid ""
 "This version comes with the improvements such as thumbnail usage as appicon "
 "and update to the first image in the image-list when receiving a ready-"
 "signal, required to show the thumbnail once it's generated."
-msgstr ""
+msgstr "Versi ini disertakan dengan penambahbaikan seperti penggunaan lakaran kenit sebagai appicon dan kemaskini imej pertama di dalam image-list bila menerima ready-signal, diperlukan untuk menunjukkan lakaran kenit bilamana ia dijanakan."
 
 #: ../ristretto.appdata.xml.in.h:4
 msgid ""
 "This release contains lots of translation-updates, and a crash when "
 "configuring the 'limit-quality' property."
-msgstr "To wydanie zawiera wiele aktualizacji tłumaczeń i naprawę błędu powodującą awarię przy konfiguracji właściwości \"ograniczenia jakości\"."
+msgstr "Keluaran ini mengandungi banyak kemaskini-terjemahan, dan mengalamai kerosakan bila mengkonfigur sifat 'limit-quality'."
 
 #: ../ristretto.appdata.xml.in.h:5
 msgid ""
 "This version comes with several changes such as online documentation on "
-"docs.xfce.org, the option to limit the maximum image-quality to the screen "
-"dimensions to improve memory-usage and performance - now ristretto renders "
-"at full quality with this option disabled, only one toolbar - instead of "
-"two, a quick-launch button on the toolbar to execute an editor, the option "
-"to pick a default-editor per mime-type, an optional clock that shows up when"
-" ristretto is fullscreen, Ristretto now shows a 'Loading..' message in the "
-"statusbar to indicate when it is busy and progressive loading of directories"
-" to prevent lockup of the UI. This version is designed to work with version "
-"4.10 of Xfce."
-msgstr ""
+"http://docs.xfce.org, the option to limit the maximum image-quality to the "
+"screen dimensions to improve memory-usage and performance - now ristretto "
+"renders at full quality with this option disabled, only one toolbar - "
+"instead of two, a quick-launch button on the toolbar to execute an editor, "
+"the option to pick a default-editor per mime-type, an optional clock that "
+"shows up when ristretto is fullscreen, Ristretto now shows a 'Loading..' "
+"message in the statusbar to indicate when it is busy and progressive loading"
+" of directories to prevent lockup of the UI. This version is designed to "
+"work with version 4.10 of Xfce."
+msgstr "Versi ini disertakan dengan beberapa perubahan seperti dokumentasi atas http://docs.xfce.org, pilihan untuk hadkan kualiti imej maksimum terhadap dimensi skrin untuk menambahbaik penggunaan-ingatan dan prestasi - kini ristretto dapat mempersembahkan dengan kualiti penuh jika pilihan ini dilumpuhkan, hanya satu palang alat - sebelum ini ada dua, butang lancar-pantas pada palang alat untuk membuka penyunting, pilihan untuk memilih penyunting- lalai per jenis-mime, jam pilihan yang ditunjukkan bila ristretto dalam mod skrin penuh, Ristretto kini memaparkan mesej 'Memuatkan..' di dalam palang status untuk menunjukkan ia sibuk dan masih memuatkan direktori untuk menghindari penguncian UI. Versi ini direka untuk berfungsi dengan Xfce versi 4.10."

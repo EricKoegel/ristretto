@@ -10,7 +10,7 @@ dnl ***************************
 dnl *** Version information ***
 dnl ***************************
 m4_define([ristretto_version_major], [0])
-m4_define([ristretto_version_minor], [7])
+m4_define([ristretto_version_minor], [8])
 m4_define([ristretto_version_micro], [0])
 m4_define([ristretto_version_build], [r@REVISION@])
 m4_define([ristretto_version_tag], [git]) # Leave empty for releases
@@ -43,7 +43,7 @@ AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 
 dnl check for standard header files
 AC_PROG_CC
-AC_PROG_INTLTOOL([0.31], [no-xml])
+IT_PROG_INTLTOOL([0.35], [no-xml])
 
 
 AC_HEADER_STDC
