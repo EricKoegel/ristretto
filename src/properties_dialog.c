@@ -129,7 +129,7 @@ rstto_properties_dialog_init (RsttoPropertiesDialog *dialog)
     GtkWidget *table;
     /* General tab */
     GtkWidget *general_label;
-    GtkWidget *name_hbox = gtk_hbox_new (FALSE, 4);
+    GtkWidget *name_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
     GtkWidget *name_label = gtk_label_new(NULL);
     GtkWidget *mime_label = gtk_label_new(NULL);
 
@@ -147,7 +147,7 @@ rstto_properties_dialog_init (RsttoPropertiesDialog *dialog)
     dialog->priv->modified_content_label = gtk_label_new(NULL);
     dialog->priv->accessed_content_label = gtk_label_new(NULL);
     dialog->priv->size_content_label = gtk_label_new(NULL);
-
+/*
     gtk_misc_set_alignment (
             GTK_MISC (dialog->priv->mime_content_label),
             0.0,
@@ -164,7 +164,7 @@ rstto_properties_dialog_init (RsttoPropertiesDialog *dialog)
             GTK_MISC (dialog->priv->size_content_label),
             0.0,
             0.5);
-
+*/
     vbox = gtk_dialog_get_content_area (
             GTK_DIALOG (dialog));
     dialog->priv->notebook = gtk_notebook_new ();
@@ -325,7 +325,7 @@ rstto_properties_dialog_init (RsttoPropertiesDialog *dialog)
     gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 
 
-    gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_OK);
+    gtk_dialog_add_button (GTK_DIALOG (dialog), _("Close"), GTK_RESPONSE_OK);
 }
 
 static void
@@ -639,7 +639,7 @@ rstto_properties_dialog_new (
     gchar *title = g_strdup_printf (_("%s - Properties"), rstto_file_get_display_name (file));
     GtkWidget *dialog = g_object_new (RSTTO_TYPE_PROPERTIES_DIALOG,
                                       "title", title,
-                                      "icon-name", GTK_STOCK_PROPERTIES,
+                                      "icon-name", "document-properties",
                                       "file", file,
                                       NULL);
     g_free (title);

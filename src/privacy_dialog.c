@@ -148,11 +148,11 @@ rstto_privacy_dialog_init (RsttoPrivacyDialog *dialog)
             dialog,
             NULL);
 
-    display_main_hbox = gtk_hbox_new(FALSE, 0);
+    display_main_hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     display_main_lbl = gtk_label_new(_("Time range to clear:"));
 
 
-    dialog->priv->cleanup_vbox = gtk_vbox_new(FALSE, 0);
+    dialog->priv->cleanup_vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
     dialog->priv->cleanup_frame = xfce_gtk_frame_box_new_with_content(_("Cleanup"), dialog->priv->cleanup_vbox);
     dialog->priv->cleanup_timeframe_combo = gtk_combo_box_text_new ();
     gtk_combo_box_text_insert (
@@ -199,8 +199,8 @@ rstto_privacy_dialog_init (RsttoPrivacyDialog *dialog)
     /* Window should not be resizable */
     gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 
-    gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
-    gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_APPLY, GTK_RESPONSE_OK);
+    gtk_dialog_add_button (GTK_DIALOG (dialog), _("Cancel"), GTK_RESPONSE_CANCEL);
+    gtk_dialog_add_button (GTK_DIALOG (dialog), _("Apply"), GTK_RESPONSE_OK);
 }
 
 static void
@@ -478,7 +478,7 @@ rstto_privacy_dialog_new (GtkWindow *parent, GtkRecentManager *recent_manager)
 {
     GtkWidget *dialog = g_object_new (RSTTO_TYPE_PRIVACY_DIALOG,
                                       "title", _("Clear private data"),
-                                      "icon-name", GTK_STOCK_CLEAR,
+                                      "icon-name", "edit-clear",
                                       "recent-manager", recent_manager,
                                       NULL);
 
