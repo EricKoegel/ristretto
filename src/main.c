@@ -95,11 +95,6 @@ main(int argc, char **argv)
     textdomain (GETTEXT_PACKAGE);
     #endif
 
-    #if !GLIB_CHECK_VERSION (2, 32, 0)
-    g_thread_init(NULL);
-    #endif
-    gdk_threads_init();
-
     if(!gtk_init_with_args(&argc, &argv, "", entries, PACKAGE, &cli_error))
     {
         if (cli_error != NULL)
@@ -162,9 +157,7 @@ main(int argc, char **argv)
         g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(gtk_main_quit), NULL);
         gtk_widget_show_all (window);
 
-        GDK_THREADS_ENTER();
         gtk_main();
-        GDK_THREADS_LEAVE();
 
         g_object_unref (image_list);
     }

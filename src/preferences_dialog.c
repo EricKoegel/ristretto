@@ -97,7 +97,7 @@ struct _RsttoPreferencesDialogPriv
         GtkWidget *bgcolor_frame;
         GtkWidget *bgcolor_vbox;
         GtkWidget *bgcolor_hbox;
-        GtkWidget *bgcolor_color_button;
+        GtkWidget *bgcolor_color_chooser;
         GtkWidget *bgcolor_override_check_button;
 
         GtkWidget *quality_frame;
@@ -230,7 +230,7 @@ rstto_preferences_dialog_init ( RsttoPreferencesDialog *dialog )
     gboolean   bool_limit_quality;
     gchar     *str_desktop_type = NULL;
 
-    GdkColor  *bgcolor;
+    GdkRGBA   *bgcolor;
     GtkWidget *timeout_lbl, *timeout_hscale;
     GtkWidget *display_main_vbox;
     GtkWidget *display_main_lbl;
@@ -286,28 +286,28 @@ rstto_preferences_dialog_init ( RsttoPreferencesDialog *dialog )
 
     dialog->priv->display_tab.bgcolor_override_check_button = gtk_check_button_new_with_label (_("Override background color:"));
     dialog->priv->display_tab.bgcolor_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-    dialog->priv->display_tab.bgcolor_color_button = gtk_color_button_new();
+    dialog->priv->display_tab.bgcolor_color_chooser = gtk_color_button_new();
 
     gtk_box_pack_start (GTK_BOX (dialog->priv->display_tab.bgcolor_hbox), 
                         dialog->priv->display_tab.bgcolor_override_check_button, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (dialog->priv->display_tab.bgcolor_hbox),
-                        dialog->priv->display_tab.bgcolor_color_button, FALSE, FALSE, 0);
+                        dialog->priv->display_tab.bgcolor_color_chooser, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (dialog->priv->display_tab.bgcolor_vbox), 
                         dialog->priv->display_tab.bgcolor_hbox, FALSE, FALSE, 0);
 
     /* set current value */
-    gtk_color_button_set_color (GTK_COLOR_BUTTON (dialog->priv->display_tab.bgcolor_color_button),
+    gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (dialog->priv->display_tab.bgcolor_color_chooser),
                                 bgcolor);
 
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->display_tab.bgcolor_override_check_button),
                                   bool_bgcolor_override);
-    gtk_widget_set_sensitive (GTK_WIDGET (dialog->priv->display_tab.bgcolor_color_button),
+    gtk_widget_set_sensitive (GTK_WIDGET (dialog->priv->display_tab.bgcolor_color_chooser),
                               bool_bgcolor_override);
 
     /* connect signals */
     g_signal_connect (G_OBJECT (dialog->priv->display_tab.bgcolor_override_check_button), 
                       "toggled", (GCallback)cb_bgcolor_override_toggled, dialog);
-    g_signal_connect (G_OBJECT (dialog->priv->display_tab.bgcolor_color_button), 
+    g_signal_connect (G_OBJECT (dialog->priv->display_tab.bgcolor_color_chooser), 
                       "color-set", G_CALLBACK (cb_bgcolor_color_set), dialog);
 
     dialog->priv->display_tab.quality_vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
@@ -380,7 +380,7 @@ rstto_preferences_dialog_init ( RsttoPreferencesDialog *dialog )
     gtk_box_pack_start (GTK_BOX (slideshow_main_vbox), dialog->priv->slideshow_tab.timeout_frame, FALSE, FALSE, 0);
 
     timeout_lbl = gtk_label_new(_("The time period an individual image is displayed during a slideshow\n(in seconds)"));
-    timeout_hscale = gtk_hscale_new_with_range(1, 60, 1);
+    timeout_hscale = gtk_scale_new_with_range(GTK_ORIENTATION_HORIZONTAL, 1, 60, 1);
     gtk_misc_set_alignment(GTK_MISC(timeout_lbl), 0, 0.5);
     gtk_misc_set_padding(GTK_MISC(timeout_lbl), 2, 2);
 
@@ -543,7 +543,7 @@ rstto_preferences_dialog_init ( RsttoPreferencesDialog *dialog )
     /* Window should not be resizable */
     gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 
-    gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_OK);
+    gtk_dialog_add_button (GTK_DIALOG (dialog), _("_Close"), GTK_RESPONSE_OK);
 
 }
 
@@ -603,13 +603,13 @@ rstto_preferences_dialog_new (GtkWindow *parent)
  *
  *       set_property ( "bgcolor-override", TRUE );
  *
- *       set_sensitive ( bgcolor_color_button, TRUE );
+ *       set_sensitive ( bgcolor_color_chooser, TRUE );
  *
  *   else
  *
  *       set_property ( "bgcolor-override", FALSE );
  *
- *       set_sensitive ( bgcolor_color_button, FALSE );
+ *       set_sensitive ( bgcolor_color_chooser, FALSE );
  *
  *   endif
  */
@@ -627,7 +627,7 @@ cb_bgcolor_override_toggled (
     /* Code Section */
 
     gtk_widget_set_sensitive (
-            dialog->priv->display_tab.bgcolor_color_button,
+            dialog->priv->display_tab.bgcolor_color_chooser,
             bgcolor_override );
 
     rstto_settings_set_boolean_property (
@@ -667,7 +667,7 @@ cb_bgcolor_color_set (
 
     /* Code Section */
 
-    g_value_init (&bgcolor_val, GDK_TYPE_COLOR);
+    g_value_init (&bgcolor_val, GDK_TYPE_RGBA);
 
     g_object_get_property (
             G_OBJECT(button),

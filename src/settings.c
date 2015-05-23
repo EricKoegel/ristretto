@@ -500,7 +500,7 @@ rstto_settings_class_init (GObjectClass *object_class)
             "bgcolor",
             "",
             "",
-            GDK_TYPE_COLOR,
+            GDK_TYPE_RGBA,
             G_PARAM_READWRITE);
     g_object_class_install_property (
             object_class,
@@ -522,7 +522,7 @@ rstto_settings_class_init (GObjectClass *object_class)
             "bgcolor-fullscreen",
             "",
             "",
-            GDK_TYPE_COLOR,
+            GDK_TYPE_RGBA,
             G_PARAM_READWRITE);
     g_object_class_install_property (
             object_class,

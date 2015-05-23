@@ -450,8 +450,6 @@ rstto_thumbnailer_queue_request_timer (
                 (error->code == DBUS_GERROR_SERVICE_UNKNOWN) &&
                 thumbnailer->priv->show_missing_thumbnailer_error == TRUE)
             {
-                GDK_THREADS_ENTER();
-
                 error_dialog = gtk_message_dialog_new_with_markup (
                         NULL,
                         0,
@@ -487,7 +485,6 @@ rstto_thumbnailer_queue_request_timer (
                          FALSE);
                 }
                 gtk_widget_destroy (error_dialog);
-                GDK_THREADS_LEAVE();
             }
         }
         /* TOOO: Nice cleanup */

@@ -83,8 +83,8 @@ struct _RsttoImageViewerPriv
     GtkIconTheme                *icon_theme;
     GdkPixbuf                   *missing_icon;
     GdkPixbuf                   *bg_icon;
-    GdkColor                    *bg_color;
-    GdkColor                    *bg_color_fs;
+    GdkRGBA                     *bg_color;
+    GdkRGBA                     *bg_color_fs;
 
     gboolean                     limit_quality;
 
@@ -499,8 +499,8 @@ rstto_image_viewer_realize(GtkWidget *widget)
 
     gtk_widget_set_realized (widget, TRUE);
 
-    g_value_init (&val_bg_color, GDK_TYPE_COLOR);
-    g_value_init (&val_bg_color_fs, GDK_TYPE_COLOR);
+    g_value_init (&val_bg_color, GDK_TYPE_RGBA);
+    g_value_init (&val_bg_color_fs, GDK_TYPE_RGBA);
     g_value_init (&val_bg_color_override, G_TYPE_BOOLEAN);
     g_value_init (&val_limit_quality, G_TYPE_BOOLEAN);
     g_value_init (&val_invert_zoom, G_TYPE_BOOLEAN);
@@ -556,10 +556,6 @@ rstto_image_viewer_realize(GtkWidget *widget)
     {
         viewer->priv->bg_color = g_value_get_boxed (&val_bg_color);
     }
-    else
-    {
-        //viewer->priv->bg_color = &(widget->style->bg[GTK_STATE_NORMAL]);
-    }
 
     viewer->priv->bg_color_fs = g_value_get_boxed (&val_bg_color_fs);
 }
@@ -610,8 +606,9 @@ rstto_image_viewer_size_allocate(GtkWidget *widget, GtkAllocation *allocation)
 {
     RsttoImageViewer *viewer = RSTTO_IMAGE_VIEWER(widget);
     gint border_width = 0;
-    gtk_widget_set_allocation (widget, allocation);
     GdkWindow *window = gtk_widget_get_window (widget);
+
+    gtk_widget_set_allocation (widget, allocation);
 
     if (gtk_widget_get_realized (widget))
     {
@@ -648,8 +645,6 @@ rstto_image_viewer_draw (
         GtkWidget *widget,
         cairo_t *ctx )
 {
-    RsttoImageViewer *viewer = RSTTO_IMAGE_VIEWER (widget);
-
     cairo_save (ctx);
 
     rstto_image_viewer_paint (widget, ctx);
@@ -891,7 +886,7 @@ paint_background (
         cairo_t *ctx )
 {
     RsttoImageViewer *viewer = RSTTO_IMAGE_VIEWER (widget);
-    GdkColor *bg_color = NULL;
+    GdkRGBA *bg_color = NULL;
     GdkWindow *window = gtk_widget_get_window (widget);
     GtkAllocation allocation;
     GtkStyleContext *context = gtk_widget_get_style_context (widget);
@@ -914,7 +909,7 @@ paint_background (
     /******************************/
     if ( NULL != bg_color )
     {
-        gdk_cairo_set_source_color ( ctx, bg_color );
+        gdk_cairo_set_source_rgba ( ctx, bg_color );
         cairo_paint (ctx);
     }
     else
@@ -2350,6 +2345,9 @@ rstto_scroll_event (
                         scale = viewer->priv->scale / 1.1;
                     }
                     break;
+                case GDK_SCROLL_SMOOTH:
+                    g_warning ("not implemented");
+                    break;
             }
 
             /*
@@ -2576,9 +2574,9 @@ rstto_motion_notify_event (
                      (event->y < (viewer->priv->rendering.y_offset + viewer->priv->rendering.height)) &&
                      (event->x < (viewer->priv->rendering.x_offset + viewer->priv->rendering.width)))
                 {
-                    GdkCursor *cursor = gdk_cursor_new(GDK_UL_ANGLE);
+                    GdkCursor *cursor = gdk_cursor_new_for_display(gtk_widget_get_display(widget), GDK_UL_ANGLE);
                     gdk_window_set_cursor(window, cursor);
-                    gdk_cursor_unref(cursor);
+                    g_object_unref(cursor);
                 }
                 else
                 {
@@ -2621,9 +2619,9 @@ rstto_button_press_event (
                      (event->y < (viewer->priv->rendering.y_offset + viewer->priv->rendering.height)) &&
                      (event->x < (viewer->priv->rendering.x_offset + viewer->priv->rendering.width)))
                 {
-                    GdkCursor *cursor = gdk_cursor_new(GDK_FLEUR);
+                    GdkCursor *cursor = gdk_cursor_new_for_display(gtk_widget_get_display(widget), GDK_FLEUR);
                     gdk_window_set_cursor(window, cursor);
-                    gdk_cursor_unref(cursor);
+                    g_object_unref(cursor);
                     rstto_image_viewer_set_motion_state (viewer, RSTTO_IMAGE_VIEWER_MOTION_STATE_MOVE);
                 }
             }
@@ -2637,9 +2635,9 @@ rstto_button_press_event (
                      (event->y < (viewer->priv->rendering.y_offset + viewer->priv->rendering.height)) &&
                      (event->x < (viewer->priv->rendering.x_offset + viewer->priv->rendering.width)))
                 {
-                    GdkCursor *cursor = gdk_cursor_new(GDK_UL_ANGLE);
+                    GdkCursor *cursor = gdk_cursor_new_for_display(gtk_widget_get_display(widget), GDK_UL_ANGLE);
                     gdk_window_set_cursor (window, cursor);
-                    gdk_cursor_unref(cursor);
+                    g_object_unref(cursor);
                 }
 
                 /* Set the zoom-state even if not hovering over the
@@ -2886,8 +2884,8 @@ cb_rstto_bgcolor_changed (
     GValue val_bg_color_override = {0, };
     GValue val_bg_color_fs = {0, };
 
-    g_value_init (&val_bg_color, GDK_TYPE_COLOR);
-    g_value_init (&val_bg_color_fs, GDK_TYPE_COLOR);
+    g_value_init (&val_bg_color, GDK_TYPE_RGBA);
+    g_value_init (&val_bg_color_fs, GDK_TYPE_RGBA);
     g_value_init (&val_bg_color_override, G_TYPE_BOOLEAN);
 
     g_object_get_property (
@@ -2961,9 +2959,10 @@ cb_rstto_image_viewer_dnd (
         guint time_,
         RsttoImageViewer *viewer )
 {
-    g_return_if_fail ( RSTTO_IS_IMAGE_VIEWER(viewer) );
     gint data_len = gtk_selection_data_get_length (data);
     gint data_format = gtk_selection_data_get_format (data);
+
+    g_return_if_fail ( RSTTO_IS_IMAGE_VIEWER(viewer) );
 
     if ((data_len >= 0) && (data_format == 8))
     {
