@@ -81,7 +81,7 @@ struct _RsttoPropertiesDialogPriv
     RsttoSettings *settings;
 
     GtkWidget *notebook;
-    GtkWidget *image_table;
+    GtkWidget *image_grid;
     GtkWidget *image_label;
 
     GtkWidget *image_thumbnail;
@@ -126,7 +126,7 @@ static void
 rstto_properties_dialog_init (RsttoPropertiesDialog *dialog)
 {
     GtkWidget *vbox;
-    GtkWidget *table;
+    GtkWidget *grid;
     /* General tab */
     GtkWidget *general_label;
     GtkWidget *name_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
@@ -147,29 +147,12 @@ rstto_properties_dialog_init (RsttoPropertiesDialog *dialog)
     dialog->priv->modified_content_label = gtk_label_new(NULL);
     dialog->priv->accessed_content_label = gtk_label_new(NULL);
     dialog->priv->size_content_label = gtk_label_new(NULL);
-/*
-    gtk_misc_set_alignment (
-            GTK_MISC (dialog->priv->mime_content_label),
-            0.0,
-            0.5);
-    gtk_misc_set_alignment (
-            GTK_MISC (dialog->priv->modified_content_label),
-            0.0,
-            0.5);
-    gtk_misc_set_alignment (
-            GTK_MISC (dialog->priv->accessed_content_label),
-            0.0,
-            0.5);
-    gtk_misc_set_alignment (
-            GTK_MISC (dialog->priv->size_content_label),
-            0.0,
-            0.5);
-*/
+
     vbox = gtk_dialog_get_content_area (
             GTK_DIALOG (dialog));
     dialog->priv->notebook = gtk_notebook_new ();
 
-    table = gtk_table_new (5, 2, FALSE);
+    grid = gtk_grid_new ();
     gtk_box_pack_start (
             GTK_BOX (name_hbox),
             dialog->priv->image_thumbnail,
@@ -184,137 +167,37 @@ rstto_properties_dialog_init (RsttoPropertiesDialog *dialog)
     gtk_label_set_markup (GTK_LABEL(accessed_label), _("<b>Accessed:</b>"));
     gtk_label_set_markup (GTK_LABEL(size_label), _("<b>Size:</b>"));
 
-    gtk_misc_set_alignment (GTK_MISC (name_label), 1.0, 0.5);
-    gtk_misc_set_alignment (GTK_MISC (mime_label), 1.0, 0.5);
-    gtk_misc_set_alignment (GTK_MISC (modified_label), 1.0, 0.5);
-    gtk_misc_set_alignment (GTK_MISC (accessed_label), 1.0, 0.5);
-    gtk_misc_set_alignment (GTK_MISC (size_label), 1.0, 0.5);
+    g_object_set (G_OBJECT (name_label), "xalign", 1.0f, NULL);
+    g_object_set (G_OBJECT (name_label), "yalign", 0.5f, NULL);
+    g_object_set (G_OBJECT (mime_label), "xalign", 1.0f, NULL);
+    g_object_set (G_OBJECT (mime_label), "yalign", 0.5f, NULL);
+    g_object_set (G_OBJECT (modified_label), "xalign", 1.0f, NULL);
+    g_object_set (G_OBJECT (modified_label), "yalign", 0.5f, NULL);
+    g_object_set (G_OBJECT (accessed_label), "xalign", 1.0f, NULL);
+    g_object_set (G_OBJECT (accessed_label), "yalign", 0.5f, NULL);
+    g_object_set (G_OBJECT (size_label), "xalign", 1.0f, NULL);
+    g_object_set (G_OBJECT (size_label), "yalign", 0.5f, NULL);
 
-    gtk_table_attach (
-            GTK_TABLE (table),
-            name_hbox,
-            0,
-            1,
-            0,
-            1,
-            GTK_SHRINK | GTK_FILL,
-            GTK_SHRINK,
-            4,
-            4);
-
-    gtk_table_attach (
-            GTK_TABLE (table),
-            dialog->priv->name_entry,
-            1,
-            2,
-            0,
-            1,
-            GTK_EXPAND | GTK_FILL,
-            GTK_SHRINK,
-            4,
-            4);
-
-    gtk_table_attach (
-            GTK_TABLE (table),
-            mime_label,
-            0,
-            1,
-            1,
-            2,
-            GTK_SHRINK | GTK_FILL,
-            GTK_SHRINK,
-            4,
-            4);
-    gtk_table_attach (
-            GTK_TABLE (table),
-            dialog->priv->mime_content_label,
-            1,
-            2,
-            1,
-            2,
-            GTK_EXPAND | GTK_FILL,
-            GTK_SHRINK,
-            4,
-            4);
-
-    gtk_table_attach (
-            GTK_TABLE (table),
-            modified_label,
-            0,
-            1,
-            2,
-            3,
-            GTK_SHRINK | GTK_FILL,
-            GTK_SHRINK,
-            4,
-            4);
-    gtk_table_attach (
-            GTK_TABLE (table),
-            dialog->priv->modified_content_label,
-            1,
-            2,
-            2,
-            3,
-            GTK_EXPAND | GTK_FILL,
-            GTK_SHRINK,
-            4,
-            4);
-
-    gtk_table_attach (
-            GTK_TABLE (table),
-            accessed_label,
-            0,
-            1,
-            3,
-            4,
-            GTK_SHRINK | GTK_FILL,
-            GTK_SHRINK,
-            4,
-            4);
-    gtk_table_attach (
-            GTK_TABLE (table),
-            dialog->priv->accessed_content_label,
-            1,
-            2,
-            3,
-            4,
-            GTK_EXPAND | GTK_FILL,
-            GTK_SHRINK,
-            4,
-            4);
-
-    gtk_table_attach (
-            GTK_TABLE (table),
-            size_label,
-            0,
-            1,
-            4,
-            5,
-            GTK_SHRINK | GTK_FILL,
-            GTK_SHRINK,
-            4,
-            4);
-    gtk_table_attach (
-            GTK_TABLE (table),
-            dialog->priv->size_content_label,
-            1,
-            2,
-            4,
-            5,
-            GTK_EXPAND | GTK_FILL,
-            GTK_SHRINK,
-            4,
-            4);
+    gtk_grid_attach (GTK_GRID (grid), name_hbox, 0, 0, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), dialog->priv->name_entry, 1, 0, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), mime_label, 0, 1, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), dialog->priv->mime_content_label, 1, 1, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), modified_label, 0, 2, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), dialog->priv->modified_content_label, 1, 2, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), accessed_label, 0, 3, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), dialog->priv->accessed_content_label, 1, 3, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), size_label, 0, 4, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), dialog->priv->size_content_label, 1, 4, 1, 1);
 
     general_label = gtk_label_new (_("General"));
-    gtk_notebook_append_page (GTK_NOTEBOOK (dialog->priv->notebook), table, general_label);
+    gtk_notebook_append_page (GTK_NOTEBOOK (dialog->priv->notebook), grid, general_label);
 
-    dialog->priv->image_table = gtk_table_new (5, 2, FALSE);
+    dialog->priv->image_grid = gtk_grid_new ();
     dialog->priv->image_label = gtk_label_new (_("Image"));
 
     gtk_notebook_append_page (
             GTK_NOTEBOOK (dialog->priv->notebook),
-            dialog->priv->image_table,
+            dialog->priv->image_grid,
             dialog->priv->image_label);
 
     gtk_box_pack_start (GTK_BOX(vbox), dialog->priv->notebook, TRUE, TRUE, 3);
@@ -513,13 +396,13 @@ properties_dialog_set_file (
         if ( TRUE == rstto_file_has_exif (file) )
         {
             children = gtk_container_get_children (
-                    GTK_CONTAINER (dialog->priv->image_table));
+                    GTK_CONTAINER (dialog->priv->image_grid));
             child_iter = children;
 
             while (NULL != child_iter)
             {
                 gtk_container_remove (
-                        GTK_CONTAINER (dialog->priv->image_table),
+                        GTK_CONTAINER (dialog->priv->image_grid),
                         child_iter->data); 
                 child_iter = g_list_next (child_iter);
             }
@@ -585,44 +468,24 @@ properties_dialog_set_file (
                 gtk_label_set_markup (
                         GTK_LABEL (exif_label),
                         label_string);
-                gtk_misc_set_alignment (
-                        GTK_MISC (exif_label),
-                        1.0,
-                        0.5);
+
+                g_object_set (G_OBJECT (exif_label), "xalign", 1.0f, NULL);
+                g_object_set (G_OBJECT (exif_label), "yalign", 0.5f, NULL);
+
                 gtk_label_set_text (
                         GTK_LABEL (exif_content_label),
                         exif_data
                         );
 
-                gtk_table_attach (
-                        GTK_TABLE (dialog->priv->image_table),
-                        exif_label,
-                        0,
-                        1,
-                        i,
-                        i+1,
-                        GTK_SHRINK | GTK_FILL,
-                        GTK_SHRINK,
-                        4,
-                        4);
-                gtk_table_attach (
-                        GTK_TABLE (dialog->priv->image_table),
-                        exif_content_label,
-                        1,
-                        2,
-                        i,
-                        i+1,
-                        GTK_EXPAND | GTK_FILL,
-                        GTK_SHRINK,
-                        4,
-                        4);
+                gtk_grid_attach (GTK_GRID (dialog->priv->image_grid), exif_label, 0, 0, i, 1);
+                gtk_grid_attach (GTK_GRID (dialog->priv->image_grid), exif_content_label, 1, 0, i, 1);
             }
 
-            gtk_widget_show_all (dialog->priv->image_table);
+            gtk_widget_show_all (dialog->priv->image_grid);
         }
         else
         {
-            gtk_widget_hide (dialog->priv->image_table);
+            gtk_widget_hide (dialog->priv->image_grid);
         }
     }
 }
