@@ -105,7 +105,7 @@ struct _RsttoMainWindowPriv
     GtkWidget             *position_menu;
     GtkWidget             *image_viewer;
     GtkWidget             *p_viewer_s_window;
-    GtkWidget             *table;
+    GtkWidget             *grid;
     GtkWidget             *t_bar_s_window;
     GtkWidget             *thumbnailbar;
     GtkWidget             *statusbar;
@@ -371,31 +371,31 @@ static GtkActionEntry action_entries[] =
             N_ ("Open an image"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_open_image), },
   { "save-copy",
-            GTK_STOCK_SAVE_AS, /* Icon-name */
+            "document-save-as", /* Icon-name */
             N_ ("_Save copy..."), /* Label-text */
             "<control>s", /* Keyboard shortcut */
             N_ ("Save a copy of the image"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_save_copy), },
   { "properties",
-            GTK_STOCK_PROPERTIES, /* Icon-name */
+            "document-properties", /* Icon-name */
             N_ ("_Properties..."), /* Label-text */
             NULL, /* Keyboard shortcut */
             N_ ("Show file properties"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_properties), },
   { "edit",
-            GTK_STOCK_EDIT, /* Icon-name */
+            "gtk-edit", /* Icon-name */
             N_ ("_Edit"), /* Label-text */
             NULL, /* Keyboard shortcut */
             N_ ("Edit this image"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_edit), },
   { "close",
-            GTK_STOCK_CLOSE, /* Icon-name */
+            "window-close", /* Icon-name */
             N_ ("_Close"), /* Label-text */
             "<control>W", /* Keyboard shortcut */
             N_ ("Close this image"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_close), },
   { "quit",
-            GTK_STOCK_QUIT, /* Icon-name */
+            "application-exit", /* Icon-name */
             N_ ("_Quit"), /* Label-text */
             "<control>Q", /* Keyboard shortcut */
             N_ ("Quit Ristretto"), /* Tooltip text */
@@ -414,19 +414,19 @@ static GtkActionEntry action_entries[] =
             N_ ("_Sorting"),
             NULL, },
   { "delete",
-            GTK_STOCK_DELETE, /* Icon-name */
+            "edit-delete", /* Icon-name */
             N_ ("_Delete"), /* Label-text */
             "Delete", /* Keyboard shortcut */
             N_ ("Delete this image from disk"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_delete), },
   { "clear-private-data",
-            GTK_STOCK_CLEAR, /* Icon-name */
+            "edit-clear", /* Icon-name */
             N_ ("_Clear private data..."), /* Label-text */
             "<control><shift>Delete", /* Keyboard shortcut */
             NULL, /* Tooltip text */
             G_CALLBACK(cb_rstto_main_window_clear_private_data), },
   { "preferences",
-            GTK_STOCK_PREFERENCES, /* Icon-name */
+            "preferences-system", /* Icon-name */
             N_ ("_Preferences..."), /* Label-text */
             NULL, /* Keyboard shortcut */
             NULL, /* Tooltip text */
@@ -437,13 +437,13 @@ static GtkActionEntry action_entries[] =
             N_ ("_View"),
             NULL, },
   { "fullscreen",
-            GTK_STOCK_FULLSCREEN, /* Icon-name */
+            "view-fullscreen", /* Icon-name */
             N_ ("_Fullscreen"), /* Label-text */
             "F11", /* Keyboard shortcut */
             N_ ("Switch to fullscreen"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_fullscreen), },
   { "unfullscreen",
-            GTK_STOCK_LEAVE_FULLSCREEN, /* Icon-name */
+            "view-restore", /* Icon-name */
             N_ ("_Leave Fullscreen"), /* Label-text */
             NULL, /* Keyboard shortcut */
             N_ ("Leave Fullscreen"), /* Tooltip text */
@@ -460,25 +460,25 @@ static GtkActionEntry action_entries[] =
             N_ ("_Zoom"),
             NULL, },
   { "zoom-in",
-            GTK_STOCK_ZOOM_IN, /* Icon-name */
+            "zoom-in", /* Icon-name */
             N_ ("Zoom _In"), /* Label-text */
             "<control>plus", /* Keyboard shortcut */
             N_ ("Zoom in"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_zoom_in),},
   { "zoom-out",
-            GTK_STOCK_ZOOM_OUT, /* Icon-name */
+            "zoom-out", /* Icon-name */
             N_ ("Zoom _Out"), /* Label-text */
             "<control>minus", /* Keyboard shortcut */
             N_ ("Zoom out"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_zoom_out), },
   { "zoom-fit",
-            GTK_STOCK_ZOOM_FIT, /* Icon-name */
+            "zoom-fit-best", /* Icon-name */
             N_ ("Zoom _Fit"), /* Label-text */
             "<control>equal", /* Keyboard shortcut */
             N_ ("Zoom to fit window"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_zoom_fit), },
   { "zoom-100",
-            GTK_STOCK_ZOOM_100, /* Icon-name */
+            "zoom-original", /* Icon-name */
             N_ ("_Normal Size"), /* Label-text */
             "<control>0", /* Keyboard shortcut */
             N_ ("Zoom to 100%"), /* Tooltip text */
@@ -506,25 +506,25 @@ static GtkActionEntry action_entries[] =
             N_ ("_Go"),
             NULL, },
   { "forward",
-            GTK_STOCK_GO_FORWARD, /* Icon-name */
+            "go-next", /* Icon-name */
             N_ ("_Forward"), /* Label-text */
             "space", /* Keyboard shortcut */
             N_("Next image"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_next_image), },
   { "back",
-            GTK_STOCK_GO_BACK, /* Icon-name */
+            "go-previous", /* Icon-name */
             N_ ("_Back"), /* Label-text */
             "BackSpace", /* Keyboard shortcut */
             N_("Previous image"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_previous_image), },
   { "first",
-            GTK_STOCK_GOTO_FIRST, /* Icon-name */
+            "go-first", /* Icon-name */
             N_ ("F_irst"), /* Label-text */
             "Home", /* Keyboard shortcut */
             N_("First image"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_first_image), },
   { "last",
-            GTK_STOCK_GOTO_LAST, /* Icon-name */
+            "go-last", /* Icon-name */
             N_ ("_Last"), /* Label-text */
             "End", /* Keyboard shortcut */
             N_("Last image"), /* Tooltip text */
@@ -535,13 +535,13 @@ static GtkActionEntry action_entries[] =
             N_ ("_Help"),
             NULL, },
   { "contents",
-            GTK_STOCK_HELP, /* Icon-name */
+            "help-browser", /* Icon-name */
             N_ ("_Contents"), /* Label-text */
             "F1", /* Keyboard shortcut */
             N_ ("Display ristretto user manual"), /* Tooltip text */
             G_CALLBACK (cb_rstto_main_window_contents), },
   { "about",
-            GTK_STOCK_ABOUT,  /* Icon-name */
+            "help-about",  /* Icon-name */
             N_ ("_About"), /* Label-text */
             NULL, /* Keyboard shortcut */
             N_ ("Display information about ristretto"), /* Tooltip text */
@@ -565,7 +565,7 @@ static GtkActionEntry action_entries[] =
             NULL, },
 /* Misc */
   { "leave-fullscreen",
-            GTK_STOCK_LEAVE_FULLSCREEN, /* Icon-name */
+            "view-restore", /* Icon-name */
             N_ ("Leave _Fullscreen"), /* Label-text */
             NULL, /* Keyboard shortcut */
             NULL, /* Tooltip text */
@@ -734,6 +734,7 @@ rstto_main_window_get_type (void)
 static void
 rstto_main_window_init (RsttoMainWindow *window)
 {
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     GtkAccelGroup   *accel_group;
     GtkWidget       *separator;
     GtkWidget       *main_vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
@@ -844,10 +845,9 @@ rstto_main_window_init (RsttoMainWindow *window)
     window->priv->toolbar_fullscreen_merge_id = gtk_ui_manager_new_merge_id (window->priv->ui_manager);
     window->priv->toolbar_unfullscreen_merge_id = gtk_ui_manager_new_merge_id (window->priv->ui_manager);
 
-
     /* Create Play/Pause Slideshow actions */
-    window->priv->play_action = gtk_action_new ("play", _("_Play"), _("Play slideshow"), GTK_STOCK_MEDIA_PLAY);
-    window->priv->pause_action = gtk_action_new ("pause", _("_Pause"), _("Pause slideshow"), GTK_STOCK_MEDIA_PAUSE);
+    window->priv->play_action = gtk_action_new ("play", _("_Play"), _("Play slideshow"), "media-playback-start");
+    window->priv->pause_action = gtk_action_new ("pause", _("_Pause"), _("Pause slideshow"), "media-playback-pause");
 
     /* Create Recently used items Action */
     window->priv->recent_action = gtk_recent_action_new_for_manager ("document-open-recent", _("_Recently used"), _("Recently used"), 0, GTK_RECENT_MANAGER(window->priv->recent_manager));
@@ -948,7 +948,7 @@ rstto_main_window_init (RsttoMainWindow *window)
     rstto_icon_bar_set_file_column (RSTTO_ICON_BAR (window->priv->thumbnailbar), 0);
     rstto_icon_bar_set_item_width (RSTTO_ICON_BAR (window->priv->thumbnailbar), 96);
 
-    window->priv->table = gtk_table_new (5, 5, FALSE);
+    window->priv->grid = gtk_grid_new ();
 
     window->priv->statusbar = gtk_statusbar_new();
     window->priv->statusbar_context_id = gtk_statusbar_get_context_id (GTK_STATUSBAR(window->priv->statusbar), "image-data");
@@ -961,11 +961,11 @@ rstto_main_window_init (RsttoMainWindow *window)
     gtk_box_pack_start(GTK_BOX(main_vbox), window->priv->menubar, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(main_vbox), window->priv->toolbar, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(main_vbox), window->priv->warning, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(main_vbox), window->priv->table, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(main_vbox), window->priv->grid, TRUE, TRUE, 0);
     gtk_box_pack_start(GTK_BOX(main_vbox), window->priv->statusbar, FALSE, FALSE, 0);
 
-    gtk_table_attach (GTK_TABLE (window->priv->table), window->priv->t_bar_s_window, 1, 2, 0, 5, GTK_FILL|GTK_SHRINK, GTK_FILL|GTK_EXPAND, 0, 0);
-    gtk_table_attach (GTK_TABLE (window->priv->table), window->priv->p_viewer_s_window, 2, 3, 2, 3, GTK_EXPAND|GTK_FILL, GTK_EXPAND|GTK_FILL, 0, 0);
+    gtk_grid_attach (GTK_GRID (window->priv->grid), window->priv->t_bar_s_window, 1, 0, 1, 1);
+    gtk_grid_attach (GTK_GRID (window->priv->grid), window->priv->p_viewer_s_window, 2, 2, 1, 1);
 
     gtk_widget_set_no_show_all (window->priv->toolbar, TRUE);
     gtk_widget_set_no_show_all (window->priv->warning, TRUE);
@@ -1122,7 +1122,7 @@ rstto_main_window_init (RsttoMainWindow *window)
             "ready",
             G_CALLBACK (cb_rstto_thumbnailer_ready),
             window);
-
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
@@ -1271,8 +1271,10 @@ rstto_main_window_image_list_iter_changed (RsttoMainWindow *window)
 
     GtkWidget *open_with_menu = gtk_menu_new();
     GtkWidget *open_with_window_menu = gtk_menu_new();
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_menu_item_set_submenu (GTK_MENU_ITEM (gtk_ui_manager_get_widget ( window->priv->ui_manager, "/image-viewer-menu/open-with-menu")), open_with_menu);
     gtk_menu_item_set_submenu (GTK_MENU_ITEM (gtk_ui_manager_get_widget ( window->priv->ui_manager, "/main-menu/edit-menu/open-with-menu")), open_with_window_menu);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 
     if (window->priv->image_list)
     {
@@ -1376,13 +1378,13 @@ rstto_main_window_image_list_iter_changed (RsttoMainWindow *window)
         }
         else
         {
-            menu_item = gtk_image_menu_item_new_with_label (_("Empty"));
+            menu_item = gtk_menu_item_new_with_label (_("Empty"));
             gtk_menu_shell_append (GTK_MENU_SHELL (open_with_menu), menu_item);
             gtk_widget_set_sensitive (menu_item, FALSE);
 
             rstto_image_viewer_set_file (RSTTO_IMAGE_VIEWER(window->priv->image_viewer), NULL, -1, 0);
 
-            menu_item = gtk_image_menu_item_new_with_label (_("Empty"));
+            menu_item = gtk_menu_item_new_with_label (_("Empty"));
             gtk_menu_shell_append (GTK_MENU_SHELL (open_with_window_menu), menu_item);
             gtk_widget_set_sensitive (menu_item, FALSE);
 
@@ -1529,6 +1531,8 @@ rstto_main_window_update_buttons (RsttoMainWindow *main_window)
 {
     GdkWindow *window = gtk_widget_get_window (GTK_WIDGET(main_window));
     g_return_if_fail (main_window->priv->image_list != NULL);
+
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
     switch (rstto_image_list_get_n_images (main_window->priv->image_list))
     {
@@ -1878,6 +1882,7 @@ rstto_main_window_update_buttons (RsttoMainWindow *main_window)
                     FALSE);
         }
     }
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static gboolean
@@ -1933,17 +1938,7 @@ rstto_main_window_set_navigationbar_position (RsttoMainWindow *window, guint ori
             g_object_ref (window->priv->t_bar_s_window);
 
             gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (window->priv->t_bar_s_window)), window->priv->t_bar_s_window);
-            gtk_table_attach (
-                    GTK_TABLE (window->priv->table),
-                    window->priv->t_bar_s_window,
-                    1,
-                    2,
-                    0,
-                    5,
-                    GTK_SHRINK|GTK_FILL,
-                    GTK_EXPAND|GTK_FILL,
-                    0,
-                    0);
+            gtk_grid_attach (GTK_GRID (window->priv->grid), window->priv->t_bar_s_window, 1, 0, 1, 1);
 
             gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (window->priv->t_bar_s_window), GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
             gtk_scrolled_window_set_placement (GTK_SCROLLED_WINDOW (window->priv->t_bar_s_window), GTK_CORNER_BOTTOM_RIGHT);
@@ -1954,17 +1949,7 @@ rstto_main_window_set_navigationbar_position (RsttoMainWindow *window, guint ori
             g_object_ref (window->priv->t_bar_s_window);
 
             gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (window->priv->t_bar_s_window)), window->priv->t_bar_s_window);
-            gtk_table_attach (
-                    GTK_TABLE (window->priv->table),
-                    window->priv->t_bar_s_window,
-                    3,
-                    4,
-                    0,
-                    5,
-                    GTK_SHRINK|GTK_FILL,
-                    GTK_EXPAND|GTK_FILL,
-                    0,
-                    0);
+            gtk_grid_attach (GTK_GRID (window->priv->grid), window->priv->t_bar_s_window, 3, 0, 1, 1);
 
             gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (window->priv->t_bar_s_window), GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
             gtk_scrolled_window_set_placement (GTK_SCROLLED_WINDOW (window->priv->t_bar_s_window), GTK_CORNER_BOTTOM_LEFT);
@@ -1974,17 +1959,7 @@ rstto_main_window_set_navigationbar_position (RsttoMainWindow *window, guint ori
             g_object_ref (window->priv->t_bar_s_window);
 
             gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (window->priv->t_bar_s_window)), window->priv->t_bar_s_window);
-            gtk_table_attach (
-                    GTK_TABLE (window->priv->table),
-                    window->priv->t_bar_s_window,
-                    0,
-                    5,
-                    1,
-                    2,
-                    GTK_EXPAND|GTK_FILL,
-                    GTK_SHRINK|GTK_FILL,
-                    0,
-                    0);
+            gtk_grid_attach (GTK_GRID (window->priv->grid), window->priv->t_bar_s_window, 0, 1, 1, 1);
 
             gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (window->priv->t_bar_s_window), GTK_POLICY_ALWAYS, GTK_POLICY_NEVER);
             gtk_scrolled_window_set_placement (GTK_SCROLLED_WINDOW (window->priv->t_bar_s_window), GTK_CORNER_BOTTOM_RIGHT);
@@ -1994,17 +1969,7 @@ rstto_main_window_set_navigationbar_position (RsttoMainWindow *window, guint ori
             g_object_ref (window->priv->t_bar_s_window);
 
             gtk_container_remove (GTK_CONTAINER (gtk_widget_get_parent (window->priv->t_bar_s_window)), window->priv->t_bar_s_window);
-            gtk_table_attach (
-                    GTK_TABLE (window->priv->table),
-                    window->priv->t_bar_s_window,
-                    0,
-                    5,
-                    3,
-                    4,
-                    GTK_EXPAND|GTK_FILL,
-                    GTK_SHRINK|GTK_FILL,
-                    0,
-                    0);
+            gtk_grid_attach (GTK_GRID (window->priv->grid), window->priv->t_bar_s_window, 0, 3, 1, 1);
 
             gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (window->priv->t_bar_s_window), GTK_POLICY_ALWAYS, GTK_POLICY_NEVER);
             gtk_scrolled_window_set_placement (GTK_SCROLLED_WINDOW (window->priv->t_bar_s_window), GTK_CORNER_TOP_RIGHT);
@@ -2059,6 +2024,7 @@ cb_rstto_main_window_image_list_iter_changed (RsttoImageListIter *iter, RsttoMai
 static void
 cb_rstto_main_window_sorting_function_changed (GtkRadioAction *action, GtkRadioAction *current,  RsttoMainWindow *window)
 {
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     switch (gtk_radio_action_get_current_value (current))
     {
         case 0:  /* Sort by filename */
@@ -2077,12 +2043,15 @@ cb_rstto_main_window_sorting_function_changed (GtkRadioAction *action, GtkRadioA
             }
             break;
     }
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
 cb_rstto_main_window_navigationtoolbar_position_changed (GtkRadioAction *action, GtkRadioAction *current,  RsttoMainWindow *window)
 {
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     rstto_main_window_set_navigationbar_position (window, gtk_radio_action_get_current_value (current));
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
@@ -2091,7 +2060,9 @@ cb_rstto_main_window_thumbnail_size_changed (
         GtkRadioAction *current,
         RsttoMainWindow *window)
 {
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     rstto_main_window_set_thumbnail_size (window, gtk_radio_action_get_current_value (current));
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
@@ -2123,9 +2094,9 @@ cb_rstto_main_window_set_as_wallpaper (GtkWidget *widget, RsttoMainWindow *windo
                 _("Choose 'set wallpaper' method"),
                 GTK_WINDOW(window),
                 GTK_DIALOG_DESTROY_WITH_PARENT,
-                GTK_STOCK_OK,
+                _("_OK"),
                 GTK_RESPONSE_OK,
-                GTK_STOCK_CANCEL,
+                _("_Cancel"),
                 GTK_RESPONSE_CANCEL,
                 NULL);
 
@@ -2138,10 +2109,7 @@ cb_rstto_main_window_set_as_wallpaper (GtkWidget *widget, RsttoMainWindow *windo
                 _("Configure which system is currently managing your desktop.\n"
                   "This setting determines the method <i>Ristretto</i> will use\n"
                   "to configure the desktop wallpaper."));
-        gtk_misc_set_alignment(
-                GTK_MISC(behaviour_desktop_lbl),
-                0,
-                0.5);
+        g_object_set (G_OBJECT (behaviour_desktop_lbl), "yalign", 0.5f, NULL);
         gtk_box_pack_start (
                 GTK_BOX (content_area),
                 behaviour_desktop_lbl,
@@ -2258,6 +2226,8 @@ cb_rstto_main_window_state_event(GtkWidget *widget, GdkEventWindowState *event, 
 {
     RsttoMainWindow *window = RSTTO_MAIN_WINDOW(widget);
 
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+
     if(event->changed_mask & GDK_WINDOW_STATE_FULLSCREEN)
     {
         if(event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN)
@@ -2372,6 +2342,7 @@ cb_rstto_main_window_state_event(GtkWidget *widget, GdkEventWindowState *event, 
     if (event->changed_mask & GDK_WINDOW_STATE_MAXIMIZED)
     {
     }
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static gboolean 
@@ -2431,6 +2402,9 @@ cb_rstto_main_window_image_viewer_scroll_event (GtkWidget *widget,
             case GDK_SCROLL_RIGHT:
                 rstto_image_list_iter_next (window->priv->iter);
                 break;
+            case GDK_SCROLL_SMOOTH:
+                g_warning ("Not implemented");
+                break;
         }
         ret = TRUE; /* don't call other callbacks */
     }
@@ -2481,6 +2455,7 @@ cb_rstto_main_window_show_fs_toolbar_timeout (RsttoMainWindow *window)
 static void
 cb_rstto_main_window_play (GtkWidget *widget, RsttoMainWindow *window)
 {
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_ui_manager_add_ui (window->priv->ui_manager,
                            window->priv->pause_merge_id,
                            "/main-menu/go-menu/placeholder-slideshow",
@@ -2505,6 +2480,7 @@ cb_rstto_main_window_play (GtkWidget *widget, RsttoMainWindow *window)
             window->priv->toolbar_play_merge_id);
 
     rstto_main_window_play_slideshow (window);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /**
@@ -2518,6 +2494,7 @@ cb_rstto_main_window_play (GtkWidget *widget, RsttoMainWindow *window)
 static void
 cb_rstto_main_window_pause (GtkWidget *widget, RsttoMainWindow *window)
 {
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_ui_manager_add_ui (window->priv->ui_manager,
                            window->priv->play_merge_id,
                            "/main-menu/go-menu/placeholder-slideshow",
@@ -2541,6 +2518,7 @@ cb_rstto_main_window_pause (GtkWidget *widget, RsttoMainWindow *window)
             window->priv->toolbar_pause_merge_id);
 
     window->priv->playing = FALSE;
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /**
@@ -2945,8 +2923,8 @@ cb_rstto_main_window_open_image (GtkWidget *widget, RsttoMainWindow *window)
     dialog = gtk_file_chooser_dialog_new(_("Open image"),
                                          GTK_WINDOW(window),
                                          GTK_FILE_CHOOSER_ACTION_OPEN,
-                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                         GTK_STOCK_OPEN, GTK_RESPONSE_OK,
+                                         _("_Cancel"), GTK_RESPONSE_CANCEL,
+                                         _("_Open"), GTK_RESPONSE_OK,
                                          NULL);
 
     gtk_file_chooser_set_select_multiple (GTK_FILE_CHOOSER (dialog), TRUE);
@@ -3171,8 +3149,8 @@ cb_rstto_main_window_save_copy (GtkWidget *widget, RsttoMainWindow *window)
     dialog = gtk_file_chooser_dialog_new(_("Save copy"),
                                          GTK_WINDOW(window),
                                          GTK_FILE_CHOOSER_ACTION_SAVE,
-                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                         GTK_STOCK_SAVE, GTK_RESPONSE_OK,
+                                         _("_Cancel"), GTK_RESPONSE_CANCEL,
+                                         _("_Save"), GTK_RESPONSE_OK,
                                          NULL);
     gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
 
@@ -3594,6 +3572,7 @@ cb_rstto_main_window_dnd_files (GtkWidget *widget,
 static void
 cb_rstto_main_window_toggle_show_toolbar (GtkWidget *widget, RsttoMainWindow *window)
 {
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (widget)))
     {
         gtk_widget_show (window->priv->toolbar);
@@ -3604,6 +3583,7 @@ cb_rstto_main_window_toggle_show_toolbar (GtkWidget *widget, RsttoMainWindow *wi
         gtk_widget_hide (window->priv->toolbar);
         rstto_settings_set_boolean_property (RSTTO_SETTINGS (window->priv->settings_manager), "show-toolbar", FALSE);
     }
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /**
@@ -3616,6 +3596,7 @@ cb_rstto_main_window_toggle_show_toolbar (GtkWidget *widget, RsttoMainWindow *wi
 static void
 cb_rstto_main_window_toggle_show_thumbnailbar (GtkWidget *widget, RsttoMainWindow *window)
 {
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (widget)))
     {
         if (rstto_image_list_get_n_images (window->priv->image_list) > 0)
@@ -3627,6 +3608,7 @@ cb_rstto_main_window_toggle_show_thumbnailbar (GtkWidget *widget, RsttoMainWindo
         gtk_widget_hide (window->priv->t_bar_s_window);
         rstto_settings_set_boolean_property (RSTTO_SETTINGS (window->priv->settings_manager), "show-thumbnailbar", FALSE);
     }
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /**
@@ -3639,6 +3621,7 @@ cb_rstto_main_window_toggle_show_thumbnailbar (GtkWidget *widget, RsttoMainWindo
 static void
 cb_rstto_main_window_toggle_show_statusbar (GtkWidget *widget, RsttoMainWindow *window)
 {
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (widget)))
     {
         gtk_widget_show (window->priv->statusbar);
@@ -3649,6 +3632,7 @@ cb_rstto_main_window_toggle_show_statusbar (GtkWidget *widget, RsttoMainWindow *
         gtk_widget_hide (window->priv->statusbar);
         rstto_settings_set_boolean_property (RSTTO_SETTINGS (window->priv->settings_manager), "show-statusbar", FALSE);
     }
+    G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 RsttoImageListIter *
@@ -3747,9 +3731,9 @@ rstto_main_window_launch_editor_chooser (
             _("Edit with"),
             GTK_WINDOW (window),
             GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,
-            GTK_STOCK_CANCEL,
+            _("_Cancel"),
             GTK_RESPONSE_CANCEL,
-            GTK_STOCK_OK,
+            _("_OK"),
             GTK_RESPONSE_OK,
             NULL);
 
@@ -4170,6 +4154,8 @@ rstto_main_window_play_slideshow (RsttoMainWindow *window)
 {
     GValue timeout = {0, };
 
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+
     gtk_ui_manager_add_ui (window->priv->ui_manager,
                            window->priv->pause_merge_id,
                            "/main-menu/go-menu/placeholder-slideshow",
@@ -4204,6 +4190,8 @@ rstto_main_window_play_slideshow (RsttoMainWindow *window)
             g_value_get_uint (&timeout)*1000,
             (GSourceFunc)cb_rstto_main_window_play_slideshow,
             window);
+
+    G_GNUC_END_IGNORE_DEPRECATIONS
     return TRUE;
 }
 
