@@ -272,7 +272,7 @@ rstto_settings_init (GObject *object)
             G_TYPE_BOOLEAN,
             settings,
             "bgcolor-override");
-
+/* FIXME: xfconf doesn't support GdkRGBA
     xfconf_g_property_bind_gdkcolor (
             settings->priv->channel,
             "/window/bgcolor",
@@ -283,7 +283,7 @@ rstto_settings_init (GObject *object)
             "/window/bgcolor-fullscreen",
             settings,
             "bgcolor-fullscreen");
-
+*/
     xfconf_g_property_bind (
             settings->priv->channel,
             "/window/invert-zoom-direction",

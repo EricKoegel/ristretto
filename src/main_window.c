@@ -755,6 +755,8 @@ rstto_main_window_init (RsttoMainWindow *window)
     guint thumbnail_size = 3;
     gchar *db_path = NULL;
 
+    TRACE ("entering");
+
     gtk_window_set_title (GTK_WINDOW (window), RISTRETTO_APP_TITLE);
 
     window->priv = g_new0(RsttoMainWindowPriv, 1);
@@ -1133,6 +1135,8 @@ rstto_main_window_class_init(RsttoMainWindowClass *window_class)
     GObjectClass *object_class = (GObjectClass*)window_class;
     GtkWidgetClass *widget_class = (GtkWidgetClass *)window_class;
 
+    TRACE ("entering");
+
     parent_class = g_type_class_peek_parent(window_class);
 
     object_class->dispose = rstto_main_window_dispose;
@@ -1151,6 +1155,8 @@ static void
 rstto_main_window_dispose(GObject *object)
 {
     RsttoMainWindow *window = RSTTO_MAIN_WINDOW(object);
+
+    TRACE ("entering");
 
     if (window->priv)
     {
@@ -1200,6 +1206,8 @@ GtkWidget *
 rstto_main_window_new (RsttoImageList *image_list, gboolean fullscreen)
 {
     RsttoMainWindow *window;
+
+    TRACE ("entering");
 
     g_return_val_if_fail (RSTTO_IS_IMAGE_LIST (image_list), NULL);
 
@@ -1277,6 +1285,8 @@ rstto_main_window_image_list_iter_changed (RsttoMainWindow *window)
     gtk_menu_item_set_submenu (GTK_MENU_ITEM (gtk_ui_manager_get_widget ( window->priv->ui_manager, "/image-viewer-menu/open-with-menu")), open_with_menu);
     gtk_menu_item_set_submenu (GTK_MENU_ITEM (gtk_ui_manager_get_widget ( window->priv->ui_manager, "/main-menu/edit-menu/open-with-menu")), open_with_window_menu);
     G_GNUC_END_IGNORE_DEPRECATIONS
+
+    TRACE ("entering");
 
     if (window->priv->image_list)
     {
@@ -1424,6 +1434,8 @@ rstto_main_window_update_statusbar (RsttoMainWindow *window)
     gchar exif_data[20];
     GError *error = NULL;
 
+    TRACE ("entering");
+
     if (window->priv->image_list)
     {
         cur_file = rstto_image_list_iter_get_file (window->priv->iter);
@@ -1535,6 +1547,8 @@ rstto_main_window_update_buttons (RsttoMainWindow *main_window)
     g_return_if_fail (main_window->priv->image_list != NULL);
 
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+
+    TRACE ("entering");
 
     switch (rstto_image_list_get_n_images (main_window->priv->image_list))
     {
@@ -1894,6 +1908,9 @@ rstto_window_save_geometry_timer (gpointer user_data)
     GdkWindow *window = gtk_widget_get_window (widget);
     gint width = 0;
     gint height = 0;
+
+    TRACE ("entering");
+
     /* check if the window is still visible */
     if ( gtk_widget_get_visible (widget))
     {
@@ -1923,6 +1940,8 @@ rstto_main_window_set_thumbnail_size (
         RsttoMainWindow *window,
         RsttoThumbnailSize size)
 {
+    TRACE ("entering");
+
     rstto_settings_set_uint_property (
             window->priv->settings_manager,
             "thumbnail-size",
@@ -1933,6 +1952,8 @@ static void
 rstto_main_window_set_navigationbar_position (RsttoMainWindow *window, guint orientation)
 {
     rstto_settings_set_navbar_position (window->priv->settings_manager, orientation);
+
+    TRACE ("entering");
 
     switch (orientation)
     {
@@ -1996,6 +2017,9 @@ cb_rstto_main_window_navigationtoolbar_button_press_event (GtkWidget *widget, Gd
     int button, event_time;
     RsttoMainWindow *window = RSTTO_MAIN_WINDOW (user_data);
     GtkWidget *menu = NULL;
+
+    TRACE ("entering");
+
     if (event->button == 3 && event->type == GDK_BUTTON_PRESS)
     {
         if (event)
@@ -2020,12 +2044,16 @@ cb_rstto_main_window_navigationtoolbar_button_press_event (GtkWidget *widget, Gd
 static void
 cb_rstto_main_window_image_list_iter_changed (RsttoImageListIter *iter, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     rstto_main_window_image_list_iter_changed (window);
 }
 
 static void
 cb_rstto_main_window_sorting_function_changed (GtkRadioAction *action, GtkRadioAction *current,  RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     switch (gtk_radio_action_get_current_value (current))
     {
@@ -2051,6 +2079,8 @@ cb_rstto_main_window_sorting_function_changed (GtkRadioAction *action, GtkRadioA
 static void
 cb_rstto_main_window_navigationtoolbar_position_changed (GtkRadioAction *action, GtkRadioAction *current,  RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     rstto_main_window_set_navigationbar_position (window, gtk_radio_action_get_current_value (current));
     G_GNUC_END_IGNORE_DEPRECATIONS
@@ -2062,6 +2092,8 @@ cb_rstto_main_window_thumbnail_size_changed (
         GtkRadioAction *current,
         RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     rstto_main_window_set_thumbnail_size (window, gtk_radio_action_get_current_value (current));
     G_GNUC_END_IGNORE_DEPRECATIONS
@@ -2077,6 +2109,8 @@ cb_rstto_main_window_set_as_wallpaper (GtkWidget *widget, RsttoMainWindow *windo
     GtkWidget *content_area = NULL;
     GtkWidget *behaviour_desktop_lbl;
     GtkWidget *choose_desktop_combo_box;
+
+    TRACE ("entering");
 
     if (window->priv->iter)
     {
@@ -2228,6 +2262,8 @@ cb_rstto_main_window_state_event(GtkWidget *widget, GdkEventWindowState *event, 
 {
     RsttoMainWindow *window = RSTTO_MAIN_WINDOW(widget);
 
+    TRACE ("entering");
+
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
     if(event->changed_mask & GDK_WINDOW_STATE_FULLSCREEN)
@@ -2355,6 +2391,7 @@ cb_rstto_main_window_motion_notify_event (
 {
     gint width, height;
     GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (main_window));
+
     if(gdk_window_get_state(window) & GDK_WINDOW_STATE_FULLSCREEN)
     {
         width = gdk_window_get_width (window);
@@ -2385,6 +2422,8 @@ cb_rstto_main_window_image_viewer_scroll_event (GtkWidget *widget,
 {
     RsttoMainWindow *window = RSTTO_MAIN_WINDOW (user_data);
     gboolean ret = FALSE;
+
+    TRACE ("entering");
 
     /*
      * - scroll through images with scroll
@@ -2421,6 +2460,8 @@ cb_rstto_main_window_image_viewer_enter_notify_event (GtkWidget *widget,
     RsttoMainWindow *main_window = RSTTO_MAIN_WINDOW (user_data);
     GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (user_data));
 
+    TRACE ("entering");
+
     if(gdk_window_get_state(window) & GDK_WINDOW_STATE_FULLSCREEN)
     {
         if (rstto_image_list_get_n_images (main_window->priv->image_list) != 0)
@@ -2442,6 +2483,8 @@ cb_rstto_main_window_image_viewer_enter_notify_event (GtkWidget *widget,
 static gboolean
 cb_rstto_main_window_show_fs_toolbar_timeout (RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     gtk_widget_hide (window->priv->toolbar);
     return FALSE;
 }
@@ -2457,6 +2500,8 @@ cb_rstto_main_window_show_fs_toolbar_timeout (RsttoMainWindow *window)
 static void
 cb_rstto_main_window_play (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_ui_manager_add_ui (window->priv->ui_manager,
                            window->priv->pause_merge_id,
@@ -2496,6 +2541,8 @@ cb_rstto_main_window_play (GtkWidget *widget, RsttoMainWindow *window)
 static void
 cb_rstto_main_window_pause (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_ui_manager_add_ui (window->priv->ui_manager,
                            window->priv->play_merge_id,
@@ -2531,6 +2578,8 @@ cb_rstto_main_window_pause (GtkWidget *widget, RsttoMainWindow *window)
 static gboolean
 cb_rstto_main_window_play_slideshow (RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     if (window->priv->playing)
     {
         /* Check if we could navigate forward, if not, wrapping is
@@ -2560,6 +2609,9 @@ static void
 cb_rstto_main_window_fullscreen (GtkWidget *widget, RsttoMainWindow *main_window)
 {
     GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (main_window));
+
+    TRACE ("entering");
+
     if(gdk_window_get_state(window) & GDK_WINDOW_STATE_FULLSCREEN)
     {
         gtk_window_unfullscreen(GTK_WINDOW(main_window));
@@ -2582,6 +2634,8 @@ cb_rstto_main_window_preferences (GtkWidget *widget, RsttoMainWindow *window)
 {
     GtkWidget *dialog = rstto_preferences_dialog_new (GTK_WINDOW (window));
 
+    TRACE ("entering");
+
     gtk_dialog_run (GTK_DIALOG (dialog));
 
     gtk_widget_destroy (dialog);
@@ -2603,6 +2657,8 @@ cb_rstto_main_window_about (GtkWidget *widget, RsttoMainWindow *window)
         NULL};
 
     GtkWidget *about_dialog = gtk_about_dialog_new();
+
+    TRACE ("entering");
 
     gtk_about_dialog_set_version((GtkAboutDialog *)about_dialog, PACKAGE_VERSION);
 
@@ -2636,6 +2692,8 @@ cb_rstto_main_window_about (GtkWidget *widget, RsttoMainWindow *window)
 static void
 cb_rstto_main_window_contents (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     xfce_dialog_show_help (
             GTK_WINDOW (window),
             "ristretto",
@@ -2654,6 +2712,8 @@ cb_rstto_main_window_contents (GtkWidget *widget, RsttoMainWindow *window)
 static void
 cb_rstto_main_window_quit (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     gtk_widget_destroy (GTK_WIDGET (window));
 }
 
@@ -2664,6 +2724,8 @@ cb_rstto_main_window_configure_event (
 {
     RsttoMainWindow *window = RSTTO_MAIN_WINDOW(widget);
     GtkAllocation allocation;
+
+    TRACE ("entering");
 
     gtk_widget_get_allocation (widget, &allocation);
     /* shamelessly copied from thunar, written by benny */
@@ -2694,6 +2756,8 @@ cb_rstto_main_window_configure_event (
 static void
 cb_rstto_main_window_update_statusbar (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     rstto_main_window_update_statusbar(window);
 }
 
@@ -2711,6 +2775,8 @@ cb_rstto_main_window_update_statusbar (GtkWidget *widget, RsttoMainWindow *windo
 static void
 cb_rstto_main_window_zoom_fit (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     rstto_image_viewer_set_scale (RSTTO_IMAGE_VIEWER(window->priv->image_viewer), 0);
 }
 
@@ -2724,6 +2790,8 @@ cb_rstto_main_window_zoom_fit (GtkWidget *widget, RsttoMainWindow *window)
 static void
 cb_rstto_main_window_zoom_100 (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     rstto_image_viewer_set_scale (RSTTO_IMAGE_VIEWER(window->priv->image_viewer), 1);
 }
 
@@ -2738,6 +2806,9 @@ static void
 cb_rstto_main_window_zoom_in (GtkWidget *widget, RsttoMainWindow *window)
 {
     gdouble scale = rstto_image_viewer_get_scale (RSTTO_IMAGE_VIEWER(window->priv->image_viewer));
+
+    TRACE ("entering");
+
     rstto_image_viewer_set_scale (RSTTO_IMAGE_VIEWER(window->priv->image_viewer), scale*1.2);
 }
 
@@ -2752,6 +2823,9 @@ static void
 cb_rstto_main_window_zoom_out (GtkWidget *widget, RsttoMainWindow *window)
 {
     gdouble scale = rstto_image_viewer_get_scale (RSTTO_IMAGE_VIEWER(window->priv->image_viewer));
+
+    TRACE ("entering");
+
     rstto_image_viewer_set_scale (RSTTO_IMAGE_VIEWER(window->priv->image_viewer), scale/1.2);
 }
 
@@ -2770,6 +2844,9 @@ static void
 cb_rstto_main_window_rotate_cw (GtkWidget *widget, RsttoMainWindow *window)
 {
     RsttoImageViewer *viewer = RSTTO_IMAGE_VIEWER(window->priv->image_viewer);
+
+    TRACE ("entering");
+
     switch (rstto_image_viewer_get_orientation (viewer))
     {
         default:
@@ -2800,6 +2877,9 @@ static void
 cb_rstto_main_window_rotate_ccw (GtkWidget *widget, RsttoMainWindow *window)
 {
     RsttoImageViewer *viewer = RSTTO_IMAGE_VIEWER(window->priv->image_viewer);
+
+    TRACE ("entering");
+
     switch (rstto_image_viewer_get_orientation (viewer))
     {
         default:
@@ -2835,6 +2915,8 @@ cb_rstto_main_window_rotate_ccw (GtkWidget *widget, RsttoMainWindow *window)
 static void
 cb_rstto_main_window_first_image (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     rstto_image_list_iter_set_position (window->priv->iter, 0);
 }
 
@@ -2851,6 +2933,9 @@ static void
 cb_rstto_main_window_last_image (GtkWidget *widget, RsttoMainWindow *window)
 {
     guint n_images = rstto_image_list_get_n_images (window->priv->image_list);
+
+    TRACE ("entering");
+
     rstto_image_list_iter_set_position (window->priv->iter, n_images-1);
 }
 
@@ -2865,6 +2950,8 @@ cb_rstto_main_window_last_image (GtkWidget *widget, RsttoMainWindow *window)
 static void
 cb_rstto_main_window_next_image (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     rstto_image_list_iter_next (window->priv->iter);
 }
 
@@ -2879,6 +2966,8 @@ cb_rstto_main_window_next_image (GtkWidget *widget, RsttoMainWindow *window)
 static void
 cb_rstto_main_window_previous_image (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     rstto_image_list_iter_previous (window->priv->iter);
 }
 
@@ -2891,6 +2980,8 @@ cb_rstto_main_window_previous_image (GtkWidget *widget, RsttoMainWindow *window)
 static void
 cb_rstto_main_window_open_with_other_app (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     rstto_main_window_launch_editor_chooser (window);
 }
 
@@ -2916,6 +3007,8 @@ cb_rstto_main_window_open_image (GtkWidget *widget, RsttoMainWindow *window)
     GValue current_uri_val = {0, };
     GtkFileFilter *filter;
     RsttoFile *r_file = NULL;
+
+    TRACE ("entering");
 
     g_value_init (&current_uri_val, G_TYPE_STRING);
     g_object_get_property (G_OBJECT(window->priv->settings_manager), "current-uri", &current_uri_val);
@@ -3073,6 +3166,8 @@ cb_rstto_main_window_open_recent(GtkRecentChooser *chooser, RsttoMainWindow *win
     GFile *p_file;
     RsttoFile *r_file = NULL;
 
+    TRACE ("entering");
+
     if ((error == NULL) &&
         (g_file_query_exists (file, NULL)))
     {
@@ -3148,6 +3243,8 @@ cb_rstto_main_window_save_copy (GtkWidget *widget, RsttoMainWindow *window)
     gint response;
     GFile *file, *s_file;
 
+    TRACE ("entering");
+
     dialog = gtk_file_chooser_dialog_new(_("Save copy"),
                                          GTK_WINDOW(window),
                                          GTK_FILE_CHOOSER_ACTION_SAVE,
@@ -3196,6 +3293,8 @@ cb_rstto_main_window_properties (GtkWidget *widget, RsttoMainWindow *window)
     gboolean use_thunar_properties = rstto_settings_get_boolean_property (
             window->priv->settings_manager,
             "use-thunar-properties");
+
+    TRACE ("entering");
 
     if (NULL != file)
     {
@@ -3264,6 +3363,8 @@ cb_rstto_main_window_close (
         GtkWidget *widget,
         RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     rstto_image_list_set_directory (
             window->priv->image_list,
             NULL,
@@ -3289,6 +3390,8 @@ cb_rstto_main_window_edit (
     const gchar     *editor = rstto_mime_db_lookup (window->priv->db, content_type);
     GList           *files = g_list_prepend (NULL, rstto_file_get_file (r_file));
     GDesktopAppInfo *app_info = NULL;
+
+    TRACE ("entering");
 
     if ( editor != NULL )
     {
@@ -3324,6 +3427,8 @@ cb_rstto_main_window_delete (
     GdkModifierType state;
     gboolean delete_file = FALSE;
     GError *error = NULL;
+
+    TRACE ("entering");
 
     g_return_if_fail (rstto_image_list_get_n_images (window->priv->image_list) > 0);
 
@@ -3419,6 +3524,8 @@ cb_rstto_main_window_refresh (
 {
     RsttoFile *r_file = rstto_image_list_iter_get_file (window->priv->iter);
 
+    TRACE ("entering");
+
     /* Trigger a reload of all things using this file */
     rstto_file_changed (r_file);
 }
@@ -3428,6 +3535,8 @@ rstto_main_window_is_valid_image (RsttoMainWindow *window,
                                   RsttoFile *file)
 {
     GtkFileFilterInfo filter_info;
+
+    TRACE ("entering");
 
     filter_info.contains =  GTK_FILE_FILTER_MIME_TYPE | GTK_FILE_FILTER_URI;
     filter_info.uri = rstto_file_get_uri (file);
@@ -3451,6 +3560,8 @@ cb_rstto_main_window_dnd_files (GtkWidget *widget,
     RsttoFile *file;
     guint n;
     gboolean first = TRUE;
+
+    TRACE ("entering");
 
     g_return_if_fail ( RSTTO_IS_MAIN_WINDOW(window) );
 
@@ -3574,6 +3685,8 @@ cb_rstto_main_window_dnd_files (GtkWidget *widget,
 static void
 cb_rstto_main_window_toggle_show_toolbar (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (widget)))
     {
@@ -3598,6 +3711,8 @@ cb_rstto_main_window_toggle_show_toolbar (GtkWidget *widget, RsttoMainWindow *wi
 static void
 cb_rstto_main_window_toggle_show_thumbnailbar (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (widget)))
     {
@@ -3623,6 +3738,8 @@ cb_rstto_main_window_toggle_show_thumbnailbar (GtkWidget *widget, RsttoMainWindo
 static void
 cb_rstto_main_window_toggle_show_statusbar (GtkWidget *widget, RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (widget)))
     {
@@ -3641,6 +3758,8 @@ RsttoImageListIter *
 rstto_main_window_get_iter (
         RsttoMainWindow *window)
 {
+    TRACE ("entering");
+
     return window->priv->iter;
 }
 
@@ -3651,6 +3770,8 @@ rstto_main_window_add_file_to_recent_files (GFile *file)
     GtkRecentData *recent_data;
     gchar* uri;
     static gchar *groups[2] = { RSTTO_RECENT_FILES_GROUP , NULL };
+
+    TRACE ("entering");
 
     if (file == NULL)
     {
@@ -3728,6 +3849,8 @@ rstto_main_window_launch_editor_chooser (
     const gchar *name;
     const GdkPixbuf *pixbuf = NULL;
     GIcon *g_icon = NULL;
+
+    TRACE ("entering");
 
     dialog = gtk_dialog_new_with_buttons (
             _("Edit with"),
@@ -4052,6 +4175,8 @@ cb_rstto_main_window_clear_private_data (
 
     GtkWidget *dialog = rstto_privacy_dialog_new (GTK_WINDOW (window), window->priv->recent_manager);
 
+    TRACE ("entering");
+
     recent_filter = gtk_recent_filter_new();
     gtk_recent_filter_add_application (recent_filter, "ristretto");
     gtk_recent_chooser_add_filter(GTK_RECENT_CHOOSER(dialog), recent_filter);
@@ -4077,6 +4202,8 @@ key_press_event (
     GtkWindow *window = GTK_WINDOW ( widget );
     RsttoMainWindow *rstto_window = RSTTO_MAIN_WINDOW(widget);
 
+    TRACE ("entering");
+
     if ( FALSE == gtk_window_activate_key ( window, event ) )
     {
         switch(event->keyval)
@@ -4101,6 +4228,9 @@ cb_rstto_wrap_images_changed (
         gpointer user_data)
 {
     RsttoMainWindow *window = RSTTO_MAIN_WINDOW (user_data);
+
+    TRACE ("entering");
+
     rstto_main_window_update_buttons (window);
 }
 
@@ -4112,6 +4242,8 @@ cb_rstto_desktop_type_changed (
 {
     RsttoMainWindow *window = RSTTO_MAIN_WINDOW (user_data);
     gchar *desktop_type = NULL;
+
+    TRACE ("entering");
 
     if (window->priv->wallpaper_manager)
     {
@@ -4155,6 +4287,8 @@ gboolean
 rstto_main_window_play_slideshow (RsttoMainWindow *window)
 {
     GValue timeout = {0, };
+
+    TRACE ("entering");
 
     G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
@@ -4207,6 +4341,8 @@ cb_icon_bar_selection_changed (
     gint position = rstto_image_list_iter_get_position (window->priv->iter);
     gint selection = rstto_icon_bar_get_active (RSTTO_ICON_BAR(window->priv->thumbnailbar));
 
+    TRACE ("entering");
+
     if (position != selection )
     {
         rstto_image_list_iter_set_position (window->priv->iter, selection);
@@ -4230,6 +4366,8 @@ cb_rstto_thumbnailer_ready(
     RsttoMainWindow *window = RSTTO_MAIN_WINDOW (user_data);
     RsttoFile *cur_file = rstto_image_list_iter_get_file (window->priv->iter);
     const GdkPixbuf *pixbuf = NULL;
+
+    TRACE ("entering");
 
     if (file == cur_file)
     {
