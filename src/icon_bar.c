@@ -180,13 +180,13 @@ static void
 rstto_icon_bar_queue_draw_item (
         RsttoIconBar     *icon_bar,
         RsttoIconBarItem *item);
-
+/*
 static void
 rstto_icon_bar_paint_item (
         RsttoIconBar     *icon_bar,
         RsttoIconBarItem *item,
         GdkRectangle     *area);
-
+*/
 static void
 rstto_icon_bar_calculate_item_size (
         RsttoIconBar     *icon_bar,
@@ -328,9 +328,8 @@ rstto_icon_bar_class_init (RsttoIconBarClass *klass)
     gobject_class->get_property = rstto_icon_bar_get_property;
     gobject_class->set_property = rstto_icon_bar_set_property;
 
-    gtkwidget_class->destroy = rstto_icon_bar_destroy;
-
     gtkwidget_class = GTK_WIDGET_CLASS (klass);
+    gtkwidget_class->destroy = rstto_icon_bar_destroy;
     gtkwidget_class->style_set = rstto_icon_bar_style_set;
     gtkwidget_class->realize = rstto_icon_bar_realize;
     gtkwidget_class->unrealize = rstto_icon_bar_unrealize;
@@ -447,42 +446,42 @@ rstto_icon_bar_class_init (RsttoIconBarClass *klass)
             g_param_spec_boxed ("active-item-fill-color",
                 _("Active item fill color"),
                 _("Active item fill color"),
-                GDK_TYPE_COLOR,
+                GDK_TYPE_RGBA,
                 G_PARAM_READABLE));
 
     gtk_widget_class_install_style_property (gtkwidget_class,
             g_param_spec_boxed ("active-item-border-color",
                 _("Active item border color"),
                 _("Active item border color"),
-                GDK_TYPE_COLOR,
+                GDK_TYPE_RGBA,
                 G_PARAM_READABLE));
 
     gtk_widget_class_install_style_property (gtkwidget_class,
             g_param_spec_boxed ("active-item-text-color",
                 _("Active item text color"),
                 _("Active item text color"),
-                GDK_TYPE_COLOR,
+                GDK_TYPE_RGBA,
                 G_PARAM_READABLE));
 
     gtk_widget_class_install_style_property (gtkwidget_class,
             g_param_spec_boxed ("cursor-item-fill-color",
                 _("Cursor item fill color"),
                 _("Cursor item fill color"),
-                GDK_TYPE_COLOR,
+                GDK_TYPE_RGBA,
                 G_PARAM_READABLE));
 
     gtk_widget_class_install_style_property (gtkwidget_class,
             g_param_spec_boxed ("cursor-item-border-color",
                 _("Cursor item border color"),
                 _("Cursor item border color"),
-                GDK_TYPE_COLOR,
+                GDK_TYPE_RGBA,
                 G_PARAM_READABLE));
 
     gtk_widget_class_install_style_property (gtkwidget_class,
             g_param_spec_boxed ("cursor-item-text-color",
                 _("Cursor item text color"),
                 _("Cursor item text color"),
-                GDK_TYPE_COLOR,
+                GDK_TYPE_RGBA,
                 G_PARAM_READABLE));
 
     /**
@@ -668,17 +667,7 @@ rstto_icon_bar_style_set (
         GtkWidget *widget,
         GtkStyle  *previous_style)
 {
-    RsttoIconBar *icon_bar = RSTTO_ICON_BAR (widget);
-
     (*GTK_WIDGET_CLASS (rstto_icon_bar_parent_class)->style_set) (widget, previous_style);
-
-    if (gtk_widget_get_realized (widget))
-    {
-        /*
-        gdk_window_set_background (icon_bar->priv->bin_window,
-                &widget->style->base[widget->state]);
-        */
-    }
 }
 
 
@@ -771,7 +760,6 @@ rstto_icon_bar_get_preferred_width (
     RsttoIconBar      *icon_bar = RSTTO_ICON_BAR (widget);
     RsttoIconBarItem  *item;
     GList             *lp;
-    gint               width = 0;
     gint               max_width = 0;
     gint               n = 0;
 
@@ -813,7 +801,6 @@ rstto_icon_bar_get_preferred_height (
     RsttoIconBar      *icon_bar = RSTTO_ICON_BAR (widget);
     RsttoIconBarItem  *item;
     GList             *lp;
-    gint               height = 0;
     gint               max_height = 0;
     gint               n = 0;
 
@@ -836,52 +823,6 @@ rstto_icon_bar_get_preferred_height (
     else
     {
         icon_bar->priv->height = (*minimal_height) = (*natural_height) = max_height;
-    }
-}
-
-static void
-rstto_icon_bar_size_request (
-        GtkWidget      *widget,
-        GtkRequisition *requisition)
-{
-    RsttoIconBarItem *item;
-    RsttoIconBar     *icon_bar = RSTTO_ICON_BAR (widget);
-    GList          *lp;
-    gint            n = 0;
-    gint            max_width = 0;
-    gint            max_height = 0;
-
-    if (!RSTTO_ICON_BAR_VALID_MODEL_AND_COLUMNS (icon_bar)
-            || icon_bar->priv->items == NULL)
-    {
-        icon_bar->priv->width = requisition->width = 0;
-        icon_bar->priv->height = requisition->height = 0;
-        return;
-    }
-
-    /* calculate max item size */
-    for (lp = icon_bar->priv->items; lp != NULL; ++n, lp = lp->next)
-    {
-        item = lp->data;
-        rstto_icon_bar_calculate_item_size (icon_bar, item);
-        if (item->width > max_width)
-            max_width = item->width;
-        if (item->height > max_height)
-            max_height = item->height;
-    }
-
-    icon_bar->priv->item_width = max_width;
-    icon_bar->priv->item_height = max_height;
-
-    if (icon_bar->priv->orientation == GTK_ORIENTATION_VERTICAL)
-    {
-        icon_bar->priv->width = requisition->width = icon_bar->priv->item_width;
-        icon_bar->priv->height = requisition->height = icon_bar->priv->item_height * n;
-    }
-    else
-    {
-        icon_bar->priv->width = requisition->width = icon_bar->priv->item_width * n;
-        icon_bar->priv->height = requisition->height = icon_bar->priv->item_height;
     }
 }
 
@@ -1205,6 +1146,9 @@ rstto_icon_bar_scroll (
             val+=step_size;
             if (val > max_value) val = max_value;
             break;
+        case GDK_SCROLL_SMOOTH:
+            g_warning("not implemented");
+            break;
     }
     gtk_adjustment_set_value (adjustment, val);
     return TRUE;
@@ -1392,14 +1336,13 @@ rstto_icon_bar_queue_draw_item (
 }
 
 
-
+#if 0
 static void
 rstto_icon_bar_paint_item (
         RsttoIconBar     *icon_bar,
         RsttoIconBarItem *item,
         GdkRectangle     *area)
 {
-#if 0
     const GdkPixbuf *pixbuf = NULL;
     GdkColor        *border_color;
     GdkColor        *fill_color;
@@ -1543,9 +1486,8 @@ rstto_icon_bar_paint_item (
                 GDK_RGB_DITHER_NORMAL,
                 pixbuf_width, pixbuf_height);
     }
-#endif
 }
-
+#endif
 
 
 static void
