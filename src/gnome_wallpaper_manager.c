@@ -231,7 +231,7 @@ static void
 rstto_gnome_wallpaper_manager_init (GObject *object)
 {
     RsttoGnomeWallpaperManager *manager = RSTTO_GNOME_WALLPAPER_MANAGER (object);
-    GtkWidget *image_prop_table = gtk_table_new (3, 2, FALSE);
+    GtkWidget *image_prop_grid = gtk_grid_new ();
     GtkWidget *style_label = gtk_label_new( _("Style:"));
     GtkWidget *vbox;
 
@@ -246,11 +246,11 @@ rstto_gnome_wallpaper_manager_init (GObject *object)
             _("Set as wallpaper"),
             NULL,
             0,
-            GTK_STOCK_CANCEL,
+            _("_Cancel"),
             GTK_RESPONSE_CANCEL,
-            GTK_STOCK_APPLY,
+            _("_Apply"),
             GTK_RESPONSE_APPLY,
-            GTK_STOCK_OK,
+            _("_OK"),
             GTK_RESPONSE_OK,
             NULL);
 
@@ -259,7 +259,7 @@ rstto_gnome_wallpaper_manager_init (GObject *object)
     manager->priv->monitor_chooser = rstto_monitor_chooser_new ();
     manager->priv->style_combo = gtk_combo_box_text_new();
 
-    gtk_table_set_row_spacing (GTK_TABLE(image_prop_table), 1, 4);
+    gtk_grid_set_row_spacing (GTK_GRID(image_prop_grid), 4);
 
     for (i = 0; i < n_monitors; ++i)
     {
@@ -280,33 +280,14 @@ rstto_gnome_wallpaper_manager_init (GObject *object)
             0);
     gtk_box_pack_start (
             GTK_BOX (vbox),
-            image_prop_table,
+            image_prop_grid,
             FALSE,
             FALSE,
             0);
 
-    gtk_table_attach (
-            GTK_TABLE (image_prop_table),
-            style_label,
-            0,
-            1,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0);
-    gtk_table_attach (
-            GTK_TABLE (image_prop_table),
-            manager->priv->style_combo,
-            1,
-            2,
-            0,
-            1,
-            GTK_EXPAND|GTK_FILL,
-            0,
-            0,
-            0);
+    gtk_grid_attach (GTK_GRID (image_prop_grid), style_label, 0, 0, 1, 1);
+    gtk_grid_attach (GTK_GRID (manager->priv->style_combo), style_label, 1, 0, 1, 1);
+
 
     gtk_combo_box_text_append (
             GTK_COMBO_BOX_TEXT (manager->priv->style_combo),
