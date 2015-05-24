@@ -846,8 +846,10 @@ rstto_main_window_init (RsttoMainWindow *window)
     window->priv->toolbar_unfullscreen_merge_id = gtk_ui_manager_new_merge_id (window->priv->ui_manager);
 
     /* Create Play/Pause Slideshow actions */
-    window->priv->play_action = gtk_action_new ("play", _("_Play"), _("Play slideshow"), "media-playback-start");
-    window->priv->pause_action = gtk_action_new ("pause", _("_Pause"), _("Pause slideshow"), "media-playback-pause");
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    window->priv->play_action = gtk_action_new ("play", _("_Play"), _("Play slideshow"), GTK_STOCK_MEDIA_PLAY);
+    window->priv->pause_action = gtk_action_new ("pause", _("_Pause"), _("Pause slideshow"), GTK_STOCK_MEDIA_PAUSE);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 
     /* Create Recently used items Action */
     window->priv->recent_action = gtk_recent_action_new_for_manager ("document-open-recent", _("_Recently used"), _("Recently used"), 0, GTK_RECENT_MANAGER(window->priv->recent_manager));
