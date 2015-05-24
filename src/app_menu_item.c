@@ -63,7 +63,9 @@ rstto_app_menu_item_get_type (void)
             NULL
         };
 
+        G_GNUC_BEGIN_IGNORE_DEPRECATIONS
         rstto_app_menu_item_type = g_type_register_static (GTK_TYPE_IMAGE_MENU_ITEM, "RsttoAppMenuItem", &rstto_app_menu_item_info, 0);
+        G_GNUC_END_IGNORE_DEPRECATIONS
     }
     return rstto_app_menu_item_type;
 }
@@ -163,7 +165,9 @@ rstto_app_menu_item_new (GAppInfo *app_info, GFile *file)
     }
 
     gtk_menu_item_set_label (GTK_MENU_ITEM (menu_item), g_app_info_get_name (app_info));
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);
+    G_GNUC_END_IGNORE_DEPRECATIONS
 
     return GTK_WIDGET (menu_item);
 }
